@@ -54,7 +54,7 @@ export class AppTarea03Component extends HTMLElement{
     get #htmlTemplate(){
         return /* html */`
         <app-exercise>
-            <h1 slot="title">${AppEmployeeSalaryCalculator.title}</h1>
+            <h2 slot="title">${AppEmployeeSalaryCalculator.title}</h2>
             <p slot="description">
                 ${AppEmployeeSalaryCalculator.description}
             </p>

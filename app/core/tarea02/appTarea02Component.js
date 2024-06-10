@@ -45,7 +45,7 @@ export class appTarea02Component extends HTMLElement{
     get #htmlTemplate(){
         return /* html */`
         <app-exercise>
-            <h1 slot="title">${AppBasicMathAlgorithms.title}</h1>
+            <h2 slot="title">${AppBasicMathAlgorithms.title}</h2>
             <p slot="description">${AppBasicMathAlgorithms.description}</p>
             <app-basic-math-algorithms slot="content">
                 <form id="controls" slot="controls">

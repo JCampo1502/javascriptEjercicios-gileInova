@@ -54,7 +54,7 @@ export class AppTarea01Component extends HTMLElement{
     get #htmlTemplate(){
         return /* html */`
             <app-exercise>      
-                <h1 slot="title">${AppPracticalExercises.title}</h1>
+                <h2 slot="title">${AppPracticalExercises.title}</h2>
                 <p slot="description">${AppPracticalExercises.description}</p>
                 <app-practical-exercoses slot="content">
                     <form id="userControls" slot="userControls">

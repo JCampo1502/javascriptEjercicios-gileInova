@@ -1,10 +1,6 @@
 export class AppConceptosBasicos extends HTMLElement{
     #state;
 
-    static get observedAttributes() {
-        return ['page'];
-    }
-
     constructor(){
         super();
 
@@ -17,18 +13,28 @@ export class AppConceptosBasicos extends HTMLElement{
 
     connectedCallback(){
         this.render();
+        document.addEventListener('task:changePage',this.#changePage.bind(this));
     }
 
-    attributeChangedCallback(name, oldVal, newVal) {
-        if(oldVal == newVal) return;
-        if(name != "page")return;
+    disconnectedCallback(){
+        document.removeEventListener('task:changePage',this.#changePage.bind(this));
+    }
+
+    render(){
+        this.innerHTML = this.#htmlTemplate;
+    }
+
+    #changePage(e){        
+        let newVal = e.detail.page;
+        if(this.#state.page == newVal) return;        
         let page = parseInt(newVal);
         if(!page || page >= 4 || page < 0) page = 0;
         this.#updateState({page});
     }
 
-    render(){
-        this.innerHTML = this.#htmlTemplate;
+    #updateState(newState){
+        this.#state = {...this.#state, ...newState};
+        this.render();
     }
 
     get #htmlTemplate(){
@@ -52,11 +58,6 @@ export class AppConceptosBasicos extends HTMLElement{
         }
 
         return html;
-    }
-
-    #updateState(newState){
-        this.#state = {...this.#state, ...newState};
-        this.render();
     }
 }
 

@@ -1,0 +1,61 @@
+:root{
+    --font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --font-height:1.65;
+    --font-weight:700;
+    --font-size-h1:2rem;
+    --font-size-h2:1.5rem;
+    --font-size-h3:1.25rem;
+    --font-size-h4:1rem;
+    --font-size-h5:0.875rem;
+    --font-size-h6:0.85rem;
+
+    --border-radius:0.4rem;
+    --border-with:1px;
+
+    --box-shadow-sm:0 1px 2px 0 #0000001a;
+
+    --container-sm:576px;
+    --container-md:768px;
+    --container-lg:992px;
+    --container-xl:1200px;    
+    
+    --zindex-dropdown: 1000;
+    --zindex-sticky: 1020;
+    --zindex-fixed: 1030;
+    --zindex-modal-backdrop: 1040;
+    --zindex-offcanvas: 1050;
+    --zindex-modal: 1060;
+    --zindex-popover: 1070;
+    --zindex-tooltip: 1080;
+
+    --padding-inline: 1rem;
+    --padding-block:calc(1rem * 0.5);
+}
+
+
+*{
+    font-family: var(--font-family);
+    box-sizing: border-box;
+    line-height: var(--font-height);
+    
+}
+
+h1{
+    font-size: var(--font-size-h1);
+}
+
+h2{
+    font-size: var(--font-size-h2);
+}
+h3{
+    font-size: var(--font-size-h3);
+}
+h4{
+    font-size: var(--font-size-h4);
+}
+h5{
+    font-size: var(--font-size-h5);
+}
+h6{
+    font-size: var(--font-size-h6);
+}

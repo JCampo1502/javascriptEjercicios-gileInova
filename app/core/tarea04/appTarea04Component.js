@@ -45,7 +45,7 @@ export class AppTarea04Component extends HTMLElement{
     get #htmlTemplate(){
         return /* html */`
         <app-exercise>
-            <h1 slot="title">${AppPeymentCalculator.title}</h1>
+            <h2 slot="title">${AppPeymentCalculator.title}</h2>
             <p slot="description">${AppPeymentCalculator.description}</p>
             <app-payment-calculator slot="content">
                 <form id="peymentCalculatorControls" slot="peymentCalculatorControls">

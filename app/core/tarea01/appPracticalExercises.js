@@ -67,7 +67,7 @@ export class AppPracticalExercises extends HTMLElement{
     get #htmlTemplate(){        
         return /* html */ `        
         <article>
-            <h2>Ejercicio #1 - Operadores Lógicos</h2>
+            <h3>Ejercicio #1 - Operadores Lógicos</h3>
             <p>
                 Indicar si cada una de las expresiones es verdadera o falsa
             </p>
@@ -164,9 +164,9 @@ export class AppPracticalExercises extends HTMLElement{
             </table>
         </article>
         <article>
-            <h2>
+            <h3>
             Ejercicio #2 - Convertir 30 grados centígrados a grados Fahrenheit
-            </h2>
+            </h3>
 
             <p>
                 Hacer un programa que convierta los grados centígrados (30 grados) a grados Fahrenheit, la fórmula es la siguiente: (C*1.8) +32. Imprimir los resultados en una alerta.
@@ -188,7 +188,7 @@ export class AppPracticalExercises extends HTMLElement{
         </article>
 
         <article>
-            <h2>Ejercicio #3 - Incrementar en 10 </h2>
+            <h3>Ejercicio #3 - Incrementar en 10 </h3>
             <p>
                 Pedir un número al usuario y escribirlo/imprimirlo sumándole 10. Imprimir los resultados por consola
             </p>
@@ -210,7 +210,7 @@ export class AppPracticalExercises extends HTMLElement{
         </article>
 
         <article>
-            <h2>Ejercicio #4 - Conversor de grados centígrados a Fahrenheit</h2>
+            <h3>Ejercicio #4 - Conversor de grados centígrados a Fahrenheit</h3>
             <p>
                 Realizar el mismo programa del Ejercicio #2, pero ahora se debe pedir el dato inicial (grados centígrados) al usuario (teclear el dato).
             </p>
