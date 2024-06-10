@@ -8,26 +8,23 @@ export class AppButtonTaskComponent extends HTMLElement{
     constructor(){
         super();
         this.attachShadow({mode:"open"});
-        this.attributeChangedCallback("page", 0, this.getAttribute("page"));
-        this.attributeChangedCallback("type", 0, this.getAttribute("type"));
-        this.attributeChangedCallback("selected", false, this.getAttribute("selected"));
     }
 
-    connectedCallback(){
-        this.render();
+    connectedCallback(){        
+        this.render();        
     }
 
     disconnectedCallback(){
         this.querySelector("#task").removeEventListener("click",this.#changePage.bind(this));
     }
 
-    render(){
+    render(){        
         this.shadowRoot.innerHTML = this.#htmlTemplae;
-        const TaskElement = this.querySelector("#task");
+        const TaskElement = this.shadowRoot.querySelector("#task");        
+
         TaskElement.classList.remove(...TaskElement.classList);
 
-        TaskElement.addEventListener("click",this.#changePage.bind(this));
-
+        TaskElement.addEventListener("click",this.#changePage.bind(this));        
         if(this.#state.selected)TaskElement.classList.add("selected");        
 
         switch (this.#state.type) {
@@ -40,17 +37,19 @@ export class AppButtonTaskComponent extends HTMLElement{
         }
     }
     
-    attributeChangedCallback(name, oldVal, newVal) {
-        if(oldVal == newVal)return;
-        if(!newVal)return;
+    attributeChangedCallback(name, oldVal, newVal) { 
+        
+        if(oldVal == newVal)return;                
+        
+        if(!newVal && name!="selected")return;
+        
         if(name == 'page' || name == 'type') 
             newVal = parseInt(newVal);        
 
-        if(name == 'selected')newVal = (!newVal)? false:true;
-
+        if(name == 'selected')newVal =(newVal =="")? true: false;
         let obj = new Object();
-        obj[name] = newVal;
-
+        obj[name] = newVal;        
+        
         this.#updateState(obj);
     }
 
@@ -60,7 +59,13 @@ export class AppButtonTaskComponent extends HTMLElement{
     }
 
     #changePage(e){
-        const event = new CustomEvent('task:changePage',{
+        const Type = this.#state.type;
+
+        const event = new CustomEvent(
+            (Type == 1)
+            ?'task:changePage'
+            :'task:changeSection'
+            ,{
             detail: {page: this.#state.page},
             bubbles:true,
             composed:true
@@ -69,9 +74,36 @@ export class AppButtonTaskComponent extends HTMLElement{
         this.dispatchEvent(event);
     }
 
+    static get #cssTemplateStyles(){
+        return /* css */`
+            :host{
+                display:block;                
+            }
+            
+
+            .navbar-btn{
+                width:100%;
+                font-family:'Now',var(--font-family);
+                font-weight:bold;
+                font-size:var(--font-size-md);
+                padding-block:var(--space-block-sm);
+                padding-inline:var(--space-inline-sm);
+                text-align:start;
+                border:none;                
+                background:var(--background);
+            }
+
+            .navbar-btn.selected{
+                background:var(--background-secondary);
+                border-radius:var(--border-radius);
+            }
+        `;
+    }
+
     get #htmlTemplae(){
         return /* html */`
-            <button id="task"> <slot class="link"></slot> </button>
+            <style>${AppButtonTaskComponent.#cssTemplateStyles}</style>
+            <button id="task"> <slot name="content"></slot> </button>
         `;
     }
 }

@@ -1,6 +1,8 @@
 /* Shared Components */
 import { AppExeciseComponent } from './shared/appExeciseComponent.js';
 
+import { AppButtonTaskComponent } from './shared/appButtonTaskComponent.js';
+
 /* Exercises */
 import { AppTarea01Component } from './core/Tarea01/appTarea01Component.js';
 import { appTarea02Component } from './core/tarea02/AppTarea02Component.js';
