@@ -84,6 +84,8 @@ export class AppButtonTaskComponent extends HTMLElement{
             this.dispatchEvent(CloseAsideEvent);
         }
 
+        scroll(0, 0);
+
         this.dispatchEvent(event);
     }
 
@@ -140,16 +142,6 @@ export class AppButtonTaskComponent extends HTMLElement{
 
             .task-btn.selected{
                 background:var(--strong);
-            }
-
-            
-
-            @media (min-width: 768px){
-                .navbar-btn{
-                    font-size: calc(.25rem + 1vw);
-                }
-
-                
             }
 
             @media (min-width: 992px){

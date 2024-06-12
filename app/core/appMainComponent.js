@@ -27,7 +27,7 @@ const Sections = [
 
 
 export class AppMainComponent extends HTMLElement{
-    static #CurrentSection = 0;
+    static #CurrentSection = 1;
     static #CurrentTask = 1;
 
     constructor(){
@@ -100,6 +100,7 @@ export class AppMainComponent extends HTMLElement{
             
             Btn.setAttribute("type",1);
             Btn.setAttribute("page",i)
+            Btn.classList.add("main__btn")
             Span.setAttribute("slot", "content");
             if(i == 0) Btn.setAttribute("selected","");
 
@@ -162,7 +163,7 @@ export class AppMainComponent extends HTMLElement{
             .main{                
                 padding-inline:var(--space-inline-sm);
                 padding-block:var(--space-inline-sm);
-                
+                position:relative;   
             }
 
             .main__title{
@@ -170,9 +171,40 @@ export class AppMainComponent extends HTMLElement{
 
             }
 
+            .main__nav{
+                position:sticky;                
+                top:3rem;
+                display:flex;                
+                align-items:center;
+                background:var(--black);
+                color:var(--white);
+                font-family:"Now", var(--font-family);
+                padding-block:var(--space-block-sm);
+                border-radius:0 0 var(--border-radius-x2) var(--border-radius-x2);
+                                                
+                max-width:100%;
+            }
+
+            .main__task_title{
+                font-size:calc(1rem + .5vw);
+                margin-inline:var(--space-inline-sm);
+                margin-block:var(--space-block-sm);
+            }
+
+            .main__list{                    
+                padding:0;
+                margin-block:var(--space-block-sm);
+                display:flex;
+                overflow-x:auto;
+            }
+
+            .main__btn{
+                min-width:100px
+            }
+
             
 
-            @media (min-width: 992px){
+            @media (min-width: 768px){
                 :host{
                     max-height:calc(100vh - 3rem);
                     overflow-y:auto;
@@ -187,27 +219,20 @@ export class AppMainComponent extends HTMLElement{
                 .main__nav{
                     position:fixed;
                     right:5%;
-                    top:5rem;
-                    display:flex;
-                    width:120px;
-                    flex-direction:column;
-                    align-items:center;
-                    background:var(--black);
-                    color:var(--white);
-                    font-family:"Now", var(--font-family);
-                    padding-block:var(--space-block-sm);
-                    border-radius:var(--border-radius-x2);
-                }
-
-                .main__task_title{
-                    font-size:calc(1rem + .5vw);
-                    margin-inline:var(--space-inline-sm);
-                    margin-block:var(--space-block-sm);
+                    top:5rem;                
+                    width:120px;  
+                    flex-direction:column;              
                 }
 
                 .main__list{                    
                     padding:0;
                     margin-block:var(--space-block-sm);
+                    flex-direction:column;
+                    justify-content:center;
+                }
+
+                .main__btn{
+                    min-width:auto;
                 }
             }
         `;

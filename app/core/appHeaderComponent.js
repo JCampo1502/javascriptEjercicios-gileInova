@@ -103,7 +103,7 @@ export class AppHeaderComponent extends HTMLElement{
                 width:100%;
                 display: flex;
                 align-items: center;
-                justify-content: start;
+                justify-content: start;                
             }
 
             .header--open{                
