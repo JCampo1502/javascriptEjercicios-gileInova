@@ -3,7 +3,7 @@ const Sections = [
       name:  "Inicio"
     },
     {
-        name:"🚀 Conceptos Basicoss",            
+        name:"🚀 Conceptos Basicos",            
         tasks:[
             {
                 name:'Tarea 01',
@@ -84,16 +84,20 @@ export class AppMainComponent extends HTMLElement{
         if(!Section.tasks)return;
         const Template = document.createDocumentFragment();        
         const Task = document.createElement(Section.tasks[0].taq);
+        const H5 = document.createElement("h5");
         const Nav = document.createElement("nav");        
         const List = document.createElement("ul");
 
+
+        H5.innerText = "Tareas";
+        Nav.appendChild(H5);
         Nav.appendChild(List);
         Template.append(Nav,Task)
 
         Section.tasks.forEach((task, i) => {
             const Btn = document.createElement("app-btn-task");
             const Span = document.createElement("span");
-
+            
             Btn.setAttribute("type",1);
             Btn.setAttribute("page",i)
             Span.setAttribute("slot", "content");
@@ -103,7 +107,8 @@ export class AppMainComponent extends HTMLElement{
             Btn.appendChild(Span);
             List.appendChild(Btn);
         });
-
+        
+        H5.classList.add("main__task_title")
         Nav.classList.add("main__nav");
         List.classList.add("main__list");
         Task.classList.add("main__content");
@@ -126,12 +131,17 @@ export class AppMainComponent extends HTMLElement{
     }
 
     #changeTask(){
+        const CurrentSection = AppMainComponent.#CurrentSection;
+        const CurrentTask = AppMainComponent.#CurrentTask;
+
+
         this.shadowRoot.querySelector(".main__content")?.remove();
+        this.shadowRoot.querySelector(".main__list app-btn-task[selected]").removeAttribute("selected");
+        this.shadowRoot.querySelector(`.main__list app-btn-task[page='${CurrentTask}']`).setAttribute("selected","");
 
         const Template = document.createDocumentFragment();                
         const Task = document.createElement(
-            Sections[AppMainComponent.#CurrentSection]
-            .tasks[AppMainComponent.#CurrentTask].taq
+            Sections[CurrentSection].tasks[CurrentTask].taq
         );
         Template.append(Task);
 
@@ -143,17 +153,61 @@ export class AppMainComponent extends HTMLElement{
 
     /* String Templates */
     static get #cssTemplateStyles(){
-        return /* css */`            
-
-            .main{
-                min-height:100%;
+        return /* css */`   
+        
+            *{
+                box-sizing:border-box;
             }
+
+            .main{                
+                padding-inline:var(--space-inline-sm);
+                padding-block:var(--space-inline-sm);
+                
+            }
+
+            .main__title{
+                font-size:var(--font-size-h1);
+
+            }
+
+            
 
             @media (min-width: 992px){
                 :host{
-                    max-height:calc(100vh - 4rem);                
+                    max-height:calc(100vh - 3rem);
                     overflow-y:auto;
                     overflow-x:hidden;
+                }
+                
+                .main{
+                    max-width:80%;
+                    position:relative;
+                }
+
+                .main__nav{
+                    position:fixed;
+                    right:5%;
+                    top:5rem;
+                    display:flex;
+                    width:120px;
+                    flex-direction:column;
+                    align-items:center;
+                    background:var(--black);
+                    color:var(--white);
+                    font-family:"Now", var(--font-family);
+                    padding-block:var(--space-block-sm);
+                    border-radius:var(--border-radius-x2);
+                }
+
+                .main__task_title{
+                    font-size:calc(1rem + .5vw);
+                    margin-inline:var(--space-inline-sm);
+                    margin-block:var(--space-block-sm);
+                }
+
+                .main__list{                    
+                    padding:0;
+                    margin-block:var(--space-block-sm);
                 }
             }
         `;

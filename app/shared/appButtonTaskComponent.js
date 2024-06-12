@@ -78,13 +78,14 @@ export class AppButtonTaskComponent extends HTMLElement{
         return /* css */`
             :host{
                 display:block;                
+                
             }
             
 
             .navbar-btn{
-                width:100%;
                 font-family:'Now',var(--font-family);
-                font-weight:600;                
+                font-weight:600;
+                width:100%;
                 font-size: calc(.25rem + 1vw);
                 padding-block:var(--space-block-sm);
                 padding-inline:var(--space-inline-sm);
@@ -92,6 +93,24 @@ export class AppButtonTaskComponent extends HTMLElement{
                 border:none;                
                 background:var(--background);
                 color: var(--font-color);
+            }
+
+            .task-btn{
+                font-family:'Now',var(--font-family);
+                font-weight:600;
+                font-size:var(--font-size-sm);
+                background:var(--blue);
+                color:var(--white);
+                padding-block:var(--space-block-sm);
+                padding-inline:var(--space-inline-sm);
+                margin-block:var(--space-block-sm);
+                border:none;
+                border-radius:var(--border-radius);
+                transition: background .1s ease-in-out;
+            }
+
+            .task-btn:hover{
+                background:var(--blue-strong);
             }
 
             .navbar-btn.selected{
