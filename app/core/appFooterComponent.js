@@ -33,32 +33,72 @@ export class AppFooterComponent extends HTMLElement{
                 position:relative
             }
 
-            .footer__section{
-                display:flex;
-                flex-wrap:wrap;
-                justify-content:center;
-                
-            }
-            .footer__copyright{
-                order:1;
-                width:100%;
-                text-align:center;
-            }            
-
             .footer__icon{
                 filter:invert(100%) sepia(0%) saturate(0%) hue-rotate(345deg) brightness(102%) contrast(103%);
                 width:13.5px;
                 height:12.5px;
             }
 
-            .footer__list{
-                list-style:none;
-                padding:0;
+            .footer__section{
+                display:flex;
+                justify-content:center;
+                flex-direction:column;
             }
 
+            .footer__copyright{
+                font-size:var(--font-size-sm);                
+                order:1;
+                width:100%;
+                text-align:center;
+            }
+
+            .footer__list{
+                list-style:none;                
+                padding-block:0;
+                margin:0;
+                padding-inline:var(--space-block-sm);
+                margin-bottom:1rem;                
+            }
+
+            .footer__item{
+                margin-top:.4rem;
+                text-align:center;
+            }
+
+            .footer__category{
+                font-size:var(--font-size-sm);
+                padding-left:0;
+                margin:0;
+                text-align:start;
+                padding-block:var(--space-block-sm);
+                padding-inline:var(--space-inline-sm);
+                border-top:1px solid var(--white);
+                text-align:center;
+                padding-top:1rem;
+            }
+
+
+            .footer__link{
+                text-decoration:none;
+                font-size:var(--font-size-sm);
+                color:var(--white);
+                padding-block:var(--space-block-sm);
+                padding-inline:var(--space-inline-sm);
+                transition: background .2s ease-in;                    
+            }
+
+            .footer__link:hover{
+                background:var(--font-color-link);
+                text-decoration: underline;
+            }
+
+            .footer__em{
+                color:var(--font-color-link);
+                font-style: normal;
+            }
             
 
-            @media (min-width: 992px){
+            @media (min-width: 576px){
 
 
                 .footer__section{
@@ -66,58 +106,30 @@ export class AppFooterComponent extends HTMLElement{
                     padding-inline:var(--space-inline-md);                    
                     padding-left:3rem;
                     padding-top:1rem;                              
-                }
-                
-                .footer__section{
                     display:grid;
                     grid-template-columns:1fr 1fr 1fr;
-                    grid-template-rows:1fr auto;                    
+                    grid-template-rows:1fr auto;  
                 }
 
                 .footer__copyright{
                     grid-column:1 / -1;
                     grid-row:2 / -1;
-                    font-size:var(--font-size-sm);
-                    margin:1.15rem;
                 }
 
                 .footer__category{
                     font-size:var(--font-size-md);
-                    padding-left:0;
-                    margin:0;
-                    text-align:start;
                     padding-block:var(--space-block-md);
                     padding-inline:var(--space-inline-md);
+                    text-align:start;       
                 }
 
-                .footer__list{
-                    padding-block:0;
-                    margin:0;
-                    padding-inline:var(--space-block-sm);
+                .footer__link{
+                    padding-block:var(--space-block-md);  
+                    
                 }
 
                 .footer__item{
-                    margin-top:.4rem;
-                }
-                
-                .footer__link{
-                    text-decoration:none;
-                    font-size:var(--font-size-sm);
-                    color:var(--white);
-                    padding-block:var(--space-block-md);
-                    padding-inline:var(--space-inline-md);                    
-                    transition: background .2s ease-in;                    
-                }
-
-                .footer__link:hover{
-                    background:var(--font-color-link);
-                    text-decoration: underline;
-                }
-
-                .footer__em{
-                    color:var(--font-color-link);
-                    font-style: normal;
-                    
+                    text-align:left;
                 }
             }
         `;

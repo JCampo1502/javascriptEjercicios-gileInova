@@ -1,83 +1,28 @@
-export class AppHeaderComponent extends HTMLElement{
-    static #currentPage = 1;
-
-
-    #listOfPages = [
-        {
-            page:1,
-            name:"Conceptos Basicos"
-        },{
-            page:2,
-            name:"Estructuras Secuenciales"
-        },
-        {
-            page:3,
-            name:"Estructuras Condicionales"
-        },
-        {
-            page:4,
-            name:"Estructuras Ciclicas"
-        },
-        {
-            page:5,
-            name:"DOM"
-        },
-        {
-            page:6,
-            name:"Eventos"
-        },
-        {
-            page:7,
-            name:"Funciones"
-        },
-        {
-            page:8,
-            name:"Arreglos"
-        },
-        {
-            page:9,
-            name:"Objetos"
-        }
-    ]
+export class AppHeaderComponent extends HTMLElement{   
 
     constructor(){
         super();
         this.attachShadow({mode:"open"});
-        document.addEventListener("task:changeSection",this.#changeSection.bind(this));
     }
 
     connectedCallback(){
         this.render();
+        document.addEventListener("aside:toggle",this.#removeOpenMenuStyles.bind(this));
     }
 
     disconnectedCallback(){
-        document.removeEventListener("task:changeSection",this.#changeSection.bind(this));
+        /* Remove Events */
+        this.shadowRoot.querySelector("#openMenu").removeEventListener("click",this.#openMenu.bind(this));
+
+        this.shadowRoot.querySelector("#closeMenu").removeEventListener("click",this.#CloseMenu.bind(this));
+
+        this.shadowRoot.querySelector(".header__backdrop").removeEventListener("click",this.#CloseMenu.bind(this));
+
+        document.removeEventListener("aside:toggle",this.this.#removeOpenMenuStyles.bind(this));
     }
 
     render(){
         this.shadowRoot.innerHTML = this.#htmlTemplate;
-
-        const List =this.shadowRoot.querySelector(".nav__list");
-        
-        const Template = document.createDocumentFragment();
-        this.#listOfPages.forEach(item => {
-            const Li = document.createElement('li');
-            const Btn = document.createElement('app-btn-task');
-            const Span = document.createElement('span');
-
-            Li.classList.add("nav__item");
-            Btn.setAttribute("page", item.page);
-            if(item.page == AppHeaderComponent.#currentPage){
-                Btn.setAttribute("selected", "");
-            }
-
-            Span.innerText = item.name;
-            Span.setAttribute("slot","content");
-            Btn.appendChild(Span)
-            Li.appendChild(Btn);
-            Template.appendChild(Li);            
-        })
-        List.appendChild(Template.cloneNode(true));
 
         this.shadowRoot.querySelector("#openMenu").addEventListener("click",this.#openMenu.bind(this));
 
@@ -86,7 +31,18 @@ export class AppHeaderComponent extends HTMLElement{
         this.shadowRoot.querySelector(".header__backdrop").addEventListener("click",this.#CloseMenu.bind(this));
     }
 
-    #openMenu(){
+    #openMenu(){        
+        const Event = new CustomEvent(
+            "aside:toggle",
+            {
+                detail:{state:"open"},
+                bubbles:true,
+                composed:true
+            }
+        );
+
+        this.dispatchEvent(Event);
+
         this.#ChangeButtons();
         this.shadowRoot.querySelector(".header__nav").classList.add("header__nav--open");
         this.shadowRoot.querySelector(".header").classList.add("header--open")
@@ -94,6 +50,21 @@ export class AppHeaderComponent extends HTMLElement{
     }
 
     #CloseMenu(){
+        
+        const Event = new CustomEvent(
+            "aside:toggle",
+            {
+                detail:{state:"close"},
+                bubbles:true,
+                composed:true
+            }
+        );
+
+        this.dispatchEvent(Event);
+    }
+
+    #removeOpenMenuStyles(e = null){
+        if(e!=null && e.detail.state != "close")return;
         this.#ChangeButtons();
         this.shadowRoot.querySelector(".header__nav").classList.remove("header__nav--open");
         this.shadowRoot.querySelector(".header").classList.remove("header--open")
@@ -109,29 +80,23 @@ export class AppHeaderComponent extends HTMLElement{
         BtnClose.classList.add("header__btn--open");
     }
 
-    #changeSection(e){
-        const Page = e.detail.page;
-        this.shadowRoot.querySelector("app-btn-task[selected]")?.removeAttribute("selected");
-
-        const li = this.shadowRoot.querySelector(`app-btn-task[page='${Page}']`).setAttribute("selected","");                
-    }
-
     static get #cssTemplateStyles(){
         return /* css */`
             *{
                 box-sizing:border-box;
             }
-        
+
             :host{
                 display:block;                
                 position:sticky;                
                 top:0;
-                z-index:var(--zindex-sticky);
-                }
+                z-index:var(--zindex-modal);                
                 
-            .header{                
+            }
+
+            .header{
+                background:var(--background);                
                 box-shadow: var(--box-shadow-sm);
-                background:var(--background);
                 padding-inline:var(--space-inline-md);
                 padding-block:var(--space-block-md);
                 height: 3rem;
@@ -139,32 +104,58 @@ export class AppHeaderComponent extends HTMLElement{
                 display: flex;
                 align-items: center;
                 justify-content: start;
-            }            
-
-            .header__btn{
-                width:30px;
-                height:30px;
-                background:var(--background);
-                border:none;   
-                padding:0;
-                margin-inline:.5rem;
             }
-                        
-            .header__icon{
-                width:100%;
-                height:100%
+
+            .header--open{                
+                justify-content: space-between;
+                width:80vw;
             }
 
             .header__logo{
-                width: 92px;
-                height:50px;
+                width:calc(58px + 2vw);
+                height:calc(30px + 1.5vw);
+                max-width: 92px;
+                max-height:50px;
+            }
+
+            .header__btns{
+                display:flex;
+                align-items:center;
+            }
+
+            .header--open .header__btns{
+                order:1;                
+            }
+
+            .header__btn{
+                background:var(--background);
+                border:none;   
+                padding:0;
+                margin-inline:.5rem;                
+            }
+
+            .header__btn--open{
+                display:inline;
+            }
+            .header__btn--close{
+                display:none;
+                
+            }
+
+            .header__icon{
+                width:30px;
+                height:30px;
+            }
+
+            .header__icon--open{
+                filter: invert(16%) sepia(57%) saturate(6976%) hue-rotate(325deg) brightness(91%) contrast(95%);
             }
 
             .header__nav{
                 display:none;
                 background:var(--background);  
                 height: calc(100vh - 3.9rem);
-                width:85vw;
+                width:80vw;
                 position:absolute;
                 top:3.9rem;
                 left:0;
@@ -174,45 +165,10 @@ export class AppHeaderComponent extends HTMLElement{
                 color:var(--font-color-link);
                 font-family:'Now',var(--font-family);
                 
-            }            
-
-            .nav__title{
-                font-size:1rem;
-                margin-block:var(--space-block-sm);
-                padding-inline:var(--space-inline-sm);
-                padding-block:var(--space-block-sm);
-                background: var(--background-secondary);
-                border-radius: var(--border-radius);
-                font-size:100%;
             }
 
-            .nav__list{
-                list-style:none;
-                padding-left:var(--space-inline-md)
-            }
-            
-            /* on open */
-            .header--open{
-                width:85vw;
-                flex-direction: row-reverse;
-                justify-content:space-between;
-            }
-
-            .header__icon--open{
-                display:block;
-                filter: invert(16%) sepia(57%) saturate(6976%) hue-rotate(325deg) brightness(91%) contrast(95%);
-            }
-
-            .header__btn--close{
-                display:none;   
-            }
-
-            .header__menu--open{
+            .header__list{
                 display:none;
-            }
-
-            .header__nav--open{
-                display:block;
             }
 
             .header__nav--open ~ .header__backdrop{
@@ -225,6 +181,20 @@ export class AppHeaderComponent extends HTMLElement{
                 background:#000000ab;
                 z-index:-1;
             }  
+
+            @media (min-width: 992px){
+                :host{
+                    width:100vw;
+                }                
+
+                .header__btn{                
+                    display:none;
+                }
+
+                .header__btns{
+                    display:none;
+                }
+            }
         `;
     }
 
@@ -232,18 +202,23 @@ export class AppHeaderComponent extends HTMLElement{
         return /* html */`
         <style>${AppHeaderComponent.#cssTemplateStyles}</style>
         <header class="header">
-            <button id="openMenu" class="header__btn header__btn--open">
-                <img src="app/assets/menu.svg" alt="menu" class="header__icon">        
-            </button>
-            <button id="closeMenu" class="header__btn header__btn--close">
-                <img src="app/assets/close.svg" alt="menu" class="header__icon header__icon--open">        
-            </button>       
+            <div class="header__btns">
+                <button id="openMenu" class="header__btn header__btn--open">
+                    <img src="app/assets/menu.svg" alt="menu" class="header__icon">        
+                </button>
+                <button id="closeMenu" class="header__btn header__btn--close">
+                    <img src="app/assets/close.svg" alt="menu" class="header__icon header__icon--open">
+                </button>
+            </div>
             <img src="images/AgileInovaLogo.png" alt="logo" class="header__logo">
             <nav class="header__nav ">
-                <h6 class="nav__title">
-                👨‍💻 Javascript
-                </h6>
-                <ul class="nav__list">
+                <ul class="header__list">
+                    <li class="header__item">
+                        <a href="#" class="header__link">
+                            GitHub
+                            <img src="app/assets/share.svg" alt="shared icon" class="header__icon">
+                        </a>
+                    </li>
                 </ul>
             </nav>
             <div class="header__backdrop"></div>

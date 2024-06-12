@@ -43,6 +43,7 @@ export class AppAsideComponent extends HTMLElement{
         super();
         this.attachShadow({mode:"open"});
         document.addEventListener("task:changeSection",this.#changeSection.bind(this));
+
     }
 
     connectedCallback(){
@@ -92,40 +93,57 @@ export class AppAsideComponent extends HTMLElement{
                 box-sizing:border-box;
             }
 
-            :host{                
-                box-shadow: 0 0px 1px 1px #0000001b;
+            :host{
+                box-sizing:border-box;
+
                 padding-inline:var(--space-inline-sm);
                 padding-block:var(--space-block-sm);
                 color:var(--font-color-link);
                 font-family:'Now',var(--font-family);
-                max-height:calc(100vh - 4rem);                
+                max-height:calc(100vh - 3rem);
                 overflow-y:auto;
                 overflow-x:hidden;
+
+                position:fixed;
+                z-index:var(--zindex-modal);
+                top:3rem; 
+                background:var(--background);
+                width:80vw;
+                height:calc(100vh - 3rem);
+                display:none;
             }
 
-            
+
 
             .aside__title{                
-                margin-block:var(--space-block-md);
+                margin-block:var(--space-block-sm);
                 padding-inline:var(--space-inline-sm);
                 padding-block:var(--space-block-sm);
                 background: var(--background-secondary);
                 border-radius: var(--border-radius);
                 margin-top:1rem;
-                font-size: calc(.5rem + 1vw);                
+
+                font-size:calc(1rem + 1vw);
             }
 
             .aside__list{
                 list-style:none;
                 padding-left:var(--space-inline-md);
                 margin-block:var(--space-block-md);
-                
             }
 
             @media (min-width: 992px){
-                .aside__title{
-                    font-size: 1.2rem                    
-                }
+
+                :host{                
+                    position:static;
+                    width:100%;
+                    display:block !important;
+                 }   
+    
+                .aside__title{                
+                    font-size: 1.2rem ;                   
+                    margin-block:var(--space-block-md);
+                }                    
             }
         `;
     }
@@ -140,7 +158,7 @@ export class AppAsideComponent extends HTMLElement{
                 <nav class="aside__nav">                    
                     <ul class="aside__list">                    
                     </ul>
-                </nav>
+                </nav>                
             </aside>
         `;
     }

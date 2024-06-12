@@ -15,7 +15,7 @@ export class AppButtonTaskComponent extends HTMLElement{
     }
 
     disconnectedCallback(){
-        this.querySelector("#task").removeEventListener("click",this.#changePage.bind(this));
+        this.shadowRoot.querySelector("#task").removeEventListener("click",this.#changePage.bind(this));
     }
 
     render(){        
@@ -71,6 +71,19 @@ export class AppButtonTaskComponent extends HTMLElement{
             composed:true
         })
 
+        if(screen.width < 992 && Type != 1){
+            const CloseAsideEvent = new CustomEvent(
+                "aside:toggle",
+                {
+                    detail:{state:"close"},
+                    bubbles:true,
+                    composed:true
+                }
+            );
+    
+            this.dispatchEvent(CloseAsideEvent);
+        }
+
         this.dispatchEvent(event);
     }
 
@@ -81,18 +94,30 @@ export class AppButtonTaskComponent extends HTMLElement{
                 
             }
             
+            /* font-size:calc(1rem + 1vw); */
 
             .navbar-btn{
                 font-family:'Now',var(--font-family);
                 font-weight:600;
                 width:100%;
-                font-size: calc(.25rem + 1vw);
+                font-size: calc(.86rem + 1vw);
                 padding-block:var(--space-block-sm);
                 padding-inline:var(--space-inline-sm);
                 text-align:start;
                 border:none;                
                 background:var(--background);
                 color: var(--font-color);
+                transition: background .1s ease-in-out;
+            }
+
+            .navbar-btn.selected{
+                background:var(--background-secondary);
+                border-radius:var(--border-radius);
+                color:var(--font-color-link);
+            }
+
+            .navbar-btn:hover{
+                background:var(--background-secondary);
             }
 
             .task-btn{
@@ -113,10 +138,18 @@ export class AppButtonTaskComponent extends HTMLElement{
                 background:var(--blue-strong);
             }
 
-            .navbar-btn.selected{
-                background:var(--background-secondary);
-                border-radius:var(--border-radius);
-                color:var(--font-color-link);
+            .task-btn.selected{
+                background:var(--strong);
+            }
+
+            
+
+            @media (min-width: 768px){
+                .navbar-btn{
+                    font-size: calc(.25rem + 1vw);
+                }
+
+                
             }
 
             @media (min-width: 992px){

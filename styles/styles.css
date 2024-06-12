@@ -79,6 +79,11 @@
     line-height: var(--font-height);
 }
 
+body{
+    max-width: var(--container-xl);
+    margin:auto;
+}
+
 h1{
     font-size: var(--font-size-h1);    
 }
@@ -97,5 +102,5 @@ h5{
 }
 h6{
     font-size: var(--font-size-h6);
-    font-style: normal;
+    font-style: normal;    
 }

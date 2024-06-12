@@ -6,10 +6,24 @@ export class AppComponent extends HTMLElement{
 
     connectedCallback(){
         this.render();
+
+        this.addEventListener("aside:toggle",this.#asideToggle.bind(this));
+    }
+
+    disconnectedCallback(){
+        this.removeEventListener("aside:toggle",this.#asideToggle.bind(this));
     }
 
     render(){
         this.shadowRoot.innerHTML = this.#htmlTempllate;
+    }
+
+    #asideToggle(e){
+        const State = e.detail.state == "open"?true:false;
+        const Aside = this.shadowRoot.querySelector(".app__aside");
+        (State) 
+        ? Aside.style.display = "block"
+        : Aside.style.display = "none";
     }
 
     static get #cssTemplateStyle(){
@@ -35,6 +49,9 @@ export class AppComponent extends HTMLElement{
             }
 
             @media (min-width: 992px){
+                *{
+                    box-sizing:border-box;
+                }
                 :host{
                     display:grid;
                     grid-template-columns:1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
