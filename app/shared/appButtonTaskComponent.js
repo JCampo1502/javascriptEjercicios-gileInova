@@ -63,7 +63,7 @@ export class AppButtonTaskComponent extends HTMLElement{
 
         const event = new CustomEvent(
             (Type == 1)
-            ?'task:changePage'
+            ?'task:changeTask'
             :'task:changeSection'
             ,{
             detail: {page: this.#state.page},
@@ -84,18 +84,26 @@ export class AppButtonTaskComponent extends HTMLElement{
             .navbar-btn{
                 width:100%;
                 font-family:'Now',var(--font-family);
-                font-weight:bold;
-                font-size:var(--font-size-md);
+                font-weight:600;                
+                font-size: calc(.25rem + 1vw);
                 padding-block:var(--space-block-sm);
                 padding-inline:var(--space-inline-sm);
                 text-align:start;
                 border:none;                
                 background:var(--background);
+                color: var(--font-color);
             }
 
             .navbar-btn.selected{
                 background:var(--background-secondary);
                 border-radius:var(--border-radius);
+                color:var(--font-color-link);
+            }
+
+            @media (min-width: 992px){
+                .navbar-btn{
+                    font-size: 1rem                    
+                }
             }
         `;
     }

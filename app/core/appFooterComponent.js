@@ -1,7 +1,4 @@
 export class AppFooterComponent extends HTMLElement{
-    get #htmlTemplate(){
-
-    }
 
     constructor(){
         super();
@@ -9,10 +6,34 @@ export class AppFooterComponent extends HTMLElement{
     }
 
     connectedCallback(){
-        this.render()
+        this.render()                
+    }
+
+    disconnectedCallback(){
+
     }
 
     render(){
         this.shadowRoot.innerHTML = this.#htmlTemplate;
     }
+
+    #changeSection(){
+
+    }
+
+    static get #cssTemplateStyles(){
+        return /* css */`
+            
+        `;
+    }
+
+    get #htmlTemplate(){
+        return /* html */`
+            <style>${AppFooterComponent.#cssTemplateStyles}</style>
+            <h1>Footer</h1>
+        `;
+    }
+
 }
+
+customElements.define("app-footer",AppFooterComponent);

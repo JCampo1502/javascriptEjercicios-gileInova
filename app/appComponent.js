@@ -1,12 +1,3 @@
-
-
-const TEMPLATE = document.createElement('template');
-TEMPLATE.innerHTML = /* html */`
-    <app-header></app-header>
-    
-    <app-conceptos-basicos></app-conceptos-basicos>
-`
-
 export class AppComponent extends HTMLElement{
     constructor(){
         super();
@@ -18,8 +9,69 @@ export class AppComponent extends HTMLElement{
     }
 
     render(){
-        const HTML = TEMPLATE.content.cloneNode(true);
-        this.shadowRoot.append(HTML);
+        this.shadowRoot.innerHTML = this.#htmlTempllate;
+    }
+
+    static get #cssTemplateStyle(){
+        return /* css */`
+            :host{                
+                background:var(--background);
+                max-width: 100vw;
+                min-height: 100vh;
+                display:flex;
+                flex-direction:column;
+                
+            }            
+            
+            .app__aside::-webkit-scrollbar,
+            .app__main::-webkit-scrollbar{
+                width:8px;                
+            }
+
+            .app__aside::-webkit-scrollbar-thumb,
+            .app__main::-webkit-scrollbar{
+                background:#ccc;
+                border-radius: var(--border-radius)
+            }
+
+            @media (min-width: 992px){
+                :host{
+                    display:grid;
+                    grid-template-columns:1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+                    grid-template-rows:auto 1fr 1fr 1fr;
+                    grid-auto-columns:1fr;
+                    grid-auto-rows:auto;
+                }
+
+                .app__header{                                     
+                    grid-column-start:1;
+                    grid-column-end:-1;
+                }
+
+                .app__aside{
+                    grid-column-start:1;
+                    grid-column-end:3;
+                    grid-row-start:2;
+                    grid-row-end:-1
+                }
+
+                .app__main{                    
+                    grid-column-start:3;
+                    grid-column-end:-1;
+                    grid-row-start:2;
+                    grid-row-end:-1;
+                }
+            }
+        `;
+    }
+    get #htmlTempllate(){
+        return /* html */`
+            <style>${AppComponent.#cssTemplateStyle}</style>
+            <app-header class="app__header"></app-header>
+            <app-aside class="app__aside"></app-aside>
+            <app-main class="app__main"></app-main>
+            
+        `;
     }
 }
 

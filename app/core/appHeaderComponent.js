@@ -1,6 +1,7 @@
 export class AppHeaderComponent extends HTMLElement{
     static #currentPage = 1;
 
+
     #listOfPages = [
         {
             page:1,
@@ -38,7 +39,6 @@ export class AppHeaderComponent extends HTMLElement{
             name:"Objetos"
         }
     ]
-
 
     constructor(){
         super();
@@ -127,7 +127,6 @@ export class AppHeaderComponent extends HTMLElement{
                 position:sticky;                
                 top:0;
                 z-index:var(--zindex-sticky);
-                
                 }
                 
             .header{                
@@ -135,8 +134,8 @@ export class AppHeaderComponent extends HTMLElement{
                 background:var(--background);
                 padding-inline:var(--space-inline-md);
                 padding-block:var(--space-block-md);
-                height: 4rem;
-                width:100vw;
+                height: 3rem;
+                width:100%;
                 display: flex;
                 align-items: center;
                 justify-content: start;
@@ -216,12 +215,12 @@ export class AppHeaderComponent extends HTMLElement{
                 display:block;
             }
 
-            .header__nav--open .header__backdrop{
+            .header__nav--open ~ .header__backdrop{
                 content:"";
                 position:absolute;
-                top: -5rem;
+                top: 0;
                 left: 0;
-                height:calc(100vh + 3.9rem);
+                height:100vh;
                 width:100vw;
                 background:#000000ab;
                 z-index:-1;
@@ -241,13 +240,13 @@ export class AppHeaderComponent extends HTMLElement{
             </button>       
             <img src="images/AgileInovaLogo.png" alt="logo" class="header__logo">
             <nav class="header__nav ">
-                <div class="header__backdrop"></div>
                 <h6 class="nav__title">
-                    👨‍💻 Javascript
+                👨‍💻 Javascript
                 </h6>
                 <ul class="nav__list">
                 </ul>
             </nav>
+            <div class="header__backdrop"></div>
         </header>`;
     }
 }

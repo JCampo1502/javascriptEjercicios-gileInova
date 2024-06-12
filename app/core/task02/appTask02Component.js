@@ -1,6 +1,6 @@
 import { AppBasicMathAlgorithms } from "./appBasicMathAlgorithms.js";
 
-export class appTarea02Component extends HTMLElement{
+export class appTask02Component extends HTMLElement{
     constructor(){
         super();
         this.attachShadow({mode:"open"})        
@@ -64,4 +64,4 @@ export class appTarea02Component extends HTMLElement{
     }
 }
 
-customElements.define("app-tarea02",appTarea02Component);
+customElements.define("app-task-02",appTask02Component);

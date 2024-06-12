@@ -1,6 +1,6 @@
 import { AppPeymentCalculator } from "./AppPeymentCalculator.js";
 
-export class AppTarea04Component extends HTMLElement{
+export class AppTask04Component extends HTMLElement{
     constructor(){
         super();
         this.attachShadow({mode:"open"});
@@ -65,4 +65,4 @@ export class AppTarea04Component extends HTMLElement{
     }
 }
 
-customElements.define("app-tarea04",AppTarea04Component);
+customElements.define("app-task-04",AppTask04Component);

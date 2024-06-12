@@ -1,6 +1,6 @@
 import { AppEmployeeSalaryCalculator } from "./AppEmployeeSalaryCalculator.js";
 
-export class AppTarea03Component extends HTMLElement{
+export class AppTask03Component extends HTMLElement{
     constructor(){
         super();
         this.attachShadow({mode:"open"})
@@ -79,4 +79,4 @@ export class AppTarea03Component extends HTMLElement{
     }
 }
 
-customElements.define("app-tarea03",AppTarea03Component);
+customElements.define("app-task-03",AppTask03Component);

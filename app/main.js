@@ -4,17 +4,17 @@ import { AppExeciseComponent } from './shared/appExeciseComponent.js';
 import { AppButtonTaskComponent } from './shared/appButtonTaskComponent.js';
 
 /* Exercises */
-import { AppTarea01Component } from './core/Tarea01/appTarea01Component.js';
-import { appTarea02Component } from './core/tarea02/AppTarea02Component.js';
-import { AppTarea03Component } from './core/tarea03/appTarea03Component.js';
-import { AppTarea04Component } from './core/tarea04/appTarea04Component.js';
+import { AppTask01Component } from './core/task01/appTask01Component.js';
+import { appTask02Component } from './core/task02/appTask02Component.js';
+import { AppTask03Component } from './core/task03/appTask03Component.js';
+import { AppTask04Component } from './core/task04/appTask04Component.js';
 
-/* Views */
-import { AppConceptosBasicos } from './core/appConceptosBasicos.js';
 
 /* Layout */
 import { AppHeaderComponent } from './core/appHeaderComponent.js';
 import { AppFooterComponent } from './core/appFooterComponent.js';
+import { AppAsideComponent } from './core/appAsideComponent.js';
+import { AppMainComponent } from './core/appMainComponent.js';
 
 /* App Component */
 import { AppComponent } from './appComponent.js';

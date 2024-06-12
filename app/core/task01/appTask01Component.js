@@ -1,6 +1,6 @@
 import { AppPracticalExercises } from "./appPracticalExercises.js";
 
-export class AppTarea01Component extends HTMLElement{    
+export class AppTask01Component extends HTMLElement{    
 
     constructor(){
         super();
@@ -77,4 +77,4 @@ export class AppTarea01Component extends HTMLElement{
 
 
 
-customElements.define("app-tarea01",AppTarea01Component);
+customElements.define("app-task-01",AppTask01Component);
