@@ -1,30 +1,3 @@
-const Sections = [
-    {
-      name:  "Inicio"
-    },
-    {
-        name:"🚀 Conceptos Basicos",            
-        tasks:[
-            {
-                name:'Tarea 01',
-                taq:'app-task-01'
-            },
-            {
-                name:'Tarea 02',
-                taq:'app-task-02'
-            },
-            {
-                name:'Tarea 03',
-                taq:'app-task-03'
-            },
-            {
-                name:'Tarea 04',
-                taq:'app-task-04'
-            },
-        ]
-    }
-]
-
 
 export class AppMainComponent extends HTMLElement{
     static #CurrentSection = 1;
@@ -73,10 +46,11 @@ export class AppMainComponent extends HTMLElement{
     #changeSection(){        
         const Section = Sections[AppMainComponent.#CurrentSection];
 
+        
         /* Change Content */
         const Title = this.shadowRoot.querySelector(".main__title");
         Title.textContent = Section.name;
-
+        
         /* Change Tasks */
         this.shadowRoot.querySelector(".main__content")?.remove();
         this.shadowRoot.querySelector(".main__nav")?.remove();        
@@ -115,12 +89,16 @@ export class AppMainComponent extends HTMLElement{
         Task.classList.add("main__content");
 
         this.shadowRoot.querySelector(".main").append(Template.cloneNode(true));
+
+        this.scroll(0,0);
+
     }
 
     /* Change Task */
     #changeCurrentTask(e){
         let newCurrentTask = e.detail.page;
         const Tasks = Sections[AppMainComponent.#CurrentSection];
+
         if(
             !newCurrentTask ||
             newCurrentTask >= Tasks.length ||
@@ -149,15 +127,23 @@ export class AppMainComponent extends HTMLElement{
         Task.classList.add("main__content");
         
         this.shadowRoot.querySelector(".main").append(Template.cloneNode(true));
+                
+        this.scroll(0,0);
     }
 
 
     /* String Templates */
     static get #cssTemplateStyles(){
         return /* css */`   
-        
+            
             *{
                 box-sizing:border-box;
+            }
+
+            :host{
+                max-height:calc(100vh - 3rem);
+                overflow-y:auto;
+                overflow-x:hidden;
             }
 
             .main{                
@@ -173,7 +159,7 @@ export class AppMainComponent extends HTMLElement{
 
             .main__nav{
                 position:sticky;                
-                top:3rem;
+                top:0rem;
                 display:flex;                
                 align-items:center;
                 background:var(--black);
@@ -205,23 +191,26 @@ export class AppMainComponent extends HTMLElement{
             
 
             @media (min-width: 768px){
-                :host{
-                    max-height:calc(100vh - 3rem);
-                    overflow-y:auto;
-                    overflow-x:hidden;
+                .main{
+                    position:relative;
                 }
                 
-                .main{
+                .main__content{
+                    display:block;
                     max-width:80%;
-                    position:relative;
                 }
 
                 .main__nav{
-                    position:fixed;
-                    right:5%;
+                    position:sticky;
+                    left:85%;
                     top:5rem;                
                     width:120px;  
                     flex-direction:column;              
+                }
+
+                .main__title{
+                    position:absolute;
+                    top:3rem;
                 }
 
                 .main__list{                    
@@ -248,5 +237,53 @@ export class AppMainComponent extends HTMLElement{
         `;
     }
 }
-
 customElements.define("app-main",AppMainComponent);
+
+const Sections = [
+    {
+      name:  "Inicio"
+    },
+    {
+        name:"🚀 Conceptos Basicos",            
+        tasks:[
+            {
+                name:'Tarea 01',
+                taq:'app-task-01'
+            },
+            {
+                name:'Tarea 02',
+                taq:'app-task-02'
+            },
+            {
+                name:'Tarea 03',
+                taq:'app-task-03'
+            },
+            {
+                name:'Tarea 04',
+                taq:'app-task-04'
+            },
+        ]
+    },
+    {
+        name:"🎢 Estructuras Secuenciales",
+        tasks:[
+            {
+                name:'Tarea 01',
+                taq:'app-task-01'
+            },
+            {
+                name:'Tarea 02',
+                taq:'app-task-02'
+            },
+            {
+                name:'Tarea 03',
+                taq:'app-task-03'
+            },
+            {
+                name:'Tarea 04',
+                taq:'app-task-04'
+            },
+        ]
+    }
+]
+

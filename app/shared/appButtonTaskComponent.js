@@ -59,6 +59,7 @@ export class AppButtonTaskComponent extends HTMLElement{
     }
 
     #changePage(e){
+        
         const Type = this.#state.type;
 
         const event = new CustomEvent(
@@ -69,7 +70,7 @@ export class AppButtonTaskComponent extends HTMLElement{
             detail: {page: this.#state.page},
             bubbles:true,
             composed:true
-        })
+        })        
 
         if(screen.width < 992 && Type != 1){
             const CloseAsideEvent = new CustomEvent(
@@ -84,7 +85,7 @@ export class AppButtonTaskComponent extends HTMLElement{
             this.dispatchEvent(CloseAsideEvent);
         }
 
-        scroll(0, 0);
+        
 
         this.dispatchEvent(event);
     }

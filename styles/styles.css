@@ -82,6 +82,7 @@
 body{
     max-width: var(--container-xl);
     margin:auto;
+    
 }
 
 h1{

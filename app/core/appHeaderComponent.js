@@ -184,7 +184,7 @@ export class AppHeaderComponent extends HTMLElement{
 
             @media (min-width: 992px){
                 :host{
-                    width:100vw;
+                    width:100%;
                 }                
 
                 .header__btn{                

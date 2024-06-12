@@ -39,11 +39,11 @@ export class AppComponent extends HTMLElement{
             
             .app__aside::-webkit-scrollbar,
             .app__main::-webkit-scrollbar{
-                width:8px;                
+                width:8px;                   
             }
 
             .app__aside::-webkit-scrollbar-thumb,
-            .app__main::-webkit-scrollbar{
+            .app__main::-webkit-scrollbar-thumb{
                 background:#ccc;
                 border-radius: var(--border-radius)
             }
@@ -58,6 +58,7 @@ export class AppComponent extends HTMLElement{
                     grid-template-rows:auto 1fr 1fr 1fr;
                     grid-auto-columns:1fr;
                     grid-auto-rows:auto;
+                    max-width: 100%;
                 }
 
                 .app__header{                                     
