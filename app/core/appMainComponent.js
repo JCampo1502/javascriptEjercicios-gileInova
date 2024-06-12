@@ -179,16 +179,20 @@ export class AppMainComponent extends HTMLElement{
 
             .main__list{                    
                 padding:0;
-                margin-block:var(--space-block-sm);
+                margin-block:var(--space-block-sm);                
                 display:flex;
                 overflow-x:auto;
+                overflow-y:auto;     
+                 
             }
 
             .main__btn{
-                min-width:100px
-            }
+                min-width:100px;
+                max-height:40px;
+                margin-bottom:var(--space-block-sm);                
+                
+            }                       
 
-            
 
             @media (min-width: 768px){
                 .main{
@@ -203,9 +207,10 @@ export class AppMainComponent extends HTMLElement{
                 .main__nav{
                     position:sticky;
                     left:85%;
-                    top:5rem;                
+                    top:3rem;                
                     width:120px;  
                     flex-direction:column;              
+                    max-height:240px;
                 }
 
                 .main__title{
@@ -216,12 +221,23 @@ export class AppMainComponent extends HTMLElement{
                 .main__list{                    
                     padding:0;
                     margin-block:var(--space-block-sm);
-                    flex-direction:column;
-                    justify-content:center;
+                    display:block;
+                    height:162px          
                 }
 
                 .main__btn{
                     min-width:auto;
+                    margin-inline:var(--space-block-sm);
+                    margin-bottom:0;
+                }
+
+                .main__list::-webkit-scrollbar{
+                    width:8px;                
+                }
+    
+                .main__list::-webkit-scrollbar-thumb{
+                    background:#ccc;
+                    border-radius: var(--border-radius)
                 }
             }
         `;
