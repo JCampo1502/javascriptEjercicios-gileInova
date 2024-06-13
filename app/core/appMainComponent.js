@@ -220,6 +220,10 @@ export class AppMainComponent extends HTMLElement{
             }
 
             @media (min-width: 768px){
+                .main__task_title{
+                    font-size:1.5rem;
+                }
+
                 .main{
                     position:relative;
                 }

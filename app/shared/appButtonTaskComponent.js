@@ -148,6 +148,10 @@ export class AppButtonTaskComponent extends HTMLElement{
             @media (min-width: 992px){
                 .navbar-btn{
                     font-size: 1rem                    
+                }                
+                .task-btn{
+                    font-size: .92rem;
+                    max-height:1.68rem;
                 }
             }
         `;
