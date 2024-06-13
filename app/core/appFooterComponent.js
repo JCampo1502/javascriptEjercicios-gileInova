@@ -30,7 +30,8 @@ export class AppFooterComponent extends HTMLElement{
                 font-family:'Now', var(--font-family);
                 font-size:calc(.5rem + .2vw);
                 z-index: var(--zindex-fixed);   
-                position:relative
+                position:relative;
+                margin-top:1rem;                
             }
 
             .footer__icon{

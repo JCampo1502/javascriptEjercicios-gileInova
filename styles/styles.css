@@ -14,15 +14,20 @@
     --blue:#00a7d3;
     --blue-strong:#0096be;
     --blue-dark:#303846;
+    --yellow:#fff740;
 
-    --font-size-md:1rem;
-    --font-size-sm:calc(.8rem + .2vw);
+    --font-size-xl:calc(1rem + 1vw);
+    --font-size-lg:calc(1rem + .6vw);
+    --font-size-md:calc(1rem + .5vh);
+    --font-size-sm:calc(.8rem + .2vw);    
 
     --border-radius:0.4rem;
     --border-radius-x2:0.8rem;
     --border-with:1px;
 
     --box-shadow-sm:0 1px 2px 0 #0000001a; 
+
+    --box-shadow-container-md:0px 0px 6px 1px #0000001a;
 
     --container-sm:576px;
     --container-md:768px;

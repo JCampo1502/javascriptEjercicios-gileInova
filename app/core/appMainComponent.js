@@ -167,7 +167,7 @@ export class AppMainComponent extends HTMLElement{
                 font-family:"Now", var(--font-family);
                 padding-block:var(--space-block-sm);
                 border-radius:0 0 var(--border-radius-x2) var(--border-radius-x2);
-                                                
+                z-index:var(--zindex-sticky);              
                 max-width:100%;
             }
 
@@ -191,8 +191,33 @@ export class AppMainComponent extends HTMLElement{
                 max-height:40px;
                 margin-bottom:var(--space-block-sm);                
                 
-            }                       
+            }
 
+            p{
+                font-size:var(--font-size-md);
+            }
+
+            h2{
+                font-size:var(--font-size-xl);
+            }
+
+            h3{
+                font-size:var(--font-size-lg);
+            }
+
+            @media (min-width: 992px){
+                p{
+                    font-size:1.2rem;
+                }
+    
+                h2{
+                    font-size:2rem;
+                }
+    
+                h3{
+                    font-size:1.5rem;
+                }
+            }
 
             @media (min-width: 768px){
                 .main{
@@ -211,11 +236,14 @@ export class AppMainComponent extends HTMLElement{
                     width:120px;  
                     flex-direction:column;              
                     max-height:240px;
+                    
                 }
 
                 .main__title{
                     position:absolute;
                     top:3rem;
+                    max-width:80%;
+                    font-size:3.5rem;
                 }
 
                 .main__list{                    
@@ -261,27 +289,6 @@ const Sections = [
     },
     {
         name:"🚀 Conceptos Basicos",            
-        tasks:[
-            {
-                name:'Tarea 01',
-                taq:'app-task-01'
-            },
-            {
-                name:'Tarea 02',
-                taq:'app-task-02'
-            },
-            {
-                name:'Tarea 03',
-                taq:'app-task-03'
-            },
-            {
-                name:'Tarea 04',
-                taq:'app-task-04'
-            },
-        ]
-    },
-    {
-        name:"🎢 Estructuras Secuenciales",
         tasks:[
             {
                 name:'Tarea 01',

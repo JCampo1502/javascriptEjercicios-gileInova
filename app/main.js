@@ -1,13 +1,14 @@
 /* Shared Components */
+import { AppTableComponent } from './shared/appTableComponent.js';
+import { AppFormEventDispatcherComponent } from './shared/appFormEventDispatcherComponent.js';
 import { AppExeciseComponent } from './shared/appExeciseComponent.js';
-
 import { AppButtonTaskComponent } from './shared/appButtonTaskComponent.js';
 
 /* Exercises */
-import { AppTask01Component } from './core/task01/appTask01Component.js';
-import { appTask02Component } from './core/task02/appTask02Component.js';
-import { AppTask03Component } from './core/task03/appTask03Component.js';
-import { AppTask04Component } from './core/task04/appTask04Component.js';
+import { AppTask01Component } from './core/tasks/appTask01Component.js';
+import { appTask02Component } from './core/tasks/appTask02Component.js';
+import { AppTask03Component } from './core/tasks/appTask03Component.js';
+import { AppTask04Component } from './core/tasks/appTask04Component.js';
 
 
 /* Layout */
