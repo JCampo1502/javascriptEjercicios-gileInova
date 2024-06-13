@@ -4,8 +4,12 @@
 
 En este proyecto se realizarán los ejercicios de la sección de JavaScript.
 
-## 🏆 Logros
+### 📣 Recomendaciones
+  **Visual studio Code Extensions**
+  - [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
+  - [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html)
 
+## 🏆 Logros
 En el proyecto se destaca:
 
 - 🌐 **Uso de Web Components**
@@ -40,3 +44,6 @@ Gracias a **Agile Inova** por la oportunidad que me ha dado.
 
 #### Ejercicio 04
 ![Ejercicio 04](https://github.com/JCampo1502/javascriptEjerciciosAgileInova/blob/main/images/task-04.png?raw=true)
+
+## 🔗 Referencias
+ - [Webcomponents](https://lenguajejs.com/webcomponents/componentes/que-son-webcomponents/)
