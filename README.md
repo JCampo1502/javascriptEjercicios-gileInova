@@ -48,8 +48,10 @@ Gracias a **Agile Inova** por la oportunidad que me ha dado.
 ### 🎢 Estructuras Secuenciales
 #### Ejercicio 01
 ![Ejercicio 05](https://github.com/JCampo1502/javascriptEjerciciosAgileInova/blob/main/images/task-05.png?raw=true)
+
 #### Ejercicio 02
 ![Ejercicio 06](https://github.com/JCampo1502/javascriptEjerciciosAgileInova/blob/main/images/task-06.png?raw=true)
+
 #### Ejercicio 03
 ![Ejercicio 07](https://github.com/JCampo1502/javascriptEjerciciosAgileInova/blob/main/images/task-07.png?raw=true)
 

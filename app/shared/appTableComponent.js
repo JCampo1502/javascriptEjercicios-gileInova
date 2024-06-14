@@ -148,6 +148,7 @@ export class AppTableComponent extends HTMLElement{
                     margin-inline:var(--space-inline-md);
                     padding-block:var(--space-block-md);
                     padding-inline:var(--space-inline-md);
+                    width:100%;
                 }
             }
         `;

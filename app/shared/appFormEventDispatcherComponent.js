@@ -162,10 +162,17 @@ export class AppFormEventDispatcherComponent extends HTMLElement{
                     padding-block:var(--space-block-md);                        
                     margin-inline:var(--space-inline-sm);
                     margin-bottom:var(--space-block-sm);
+                    flex-direction:row;
+                    flex-wrap:wrap;
+                    justify-content:space-between;
                 }                
 
                 .form__label{
-                    width:60%;
+                    width:45%;
+                    max-width:60%;
+                    flex-grow:1;
+                    margin-inline:var(--space-inline-sm);
+
                 }
                 
             }
