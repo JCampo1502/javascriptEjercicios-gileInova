@@ -153,7 +153,7 @@ export class AppMainComponent extends HTMLElement{
             }
 
             .main__title{
-                font-size:var(--font-size-lg);
+                font-size:var(--font-size-xl);
             }
 
             .main__title--tasks{

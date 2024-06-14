@@ -151,17 +151,12 @@ export class AppFormEventDispatcherComponent extends HTMLElement{
                 margin-block:var(--space-block-md);
             }
 
-            @media (min-width: 768px){
-                :host{
-                    margin-inline:var(--space-inline-sm);
-                    margin-block:var(--space-block-md);
-                }
+            @media (min-width: 576px){
 
-                .form{
+                .form{                    
                     padding-inline:var(--space-inline-md);
                     padding-block:var(--space-block-md);                        
-                    margin-inline:var(--space-inline-sm);
-                    margin-bottom:var(--space-block-sm);
+                    
                     flex-direction:row;
                     flex-wrap:wrap;
                     justify-content:space-between;
