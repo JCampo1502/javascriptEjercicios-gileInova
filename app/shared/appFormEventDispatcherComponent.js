@@ -157,8 +157,7 @@ export class AppFormEventDispatcherComponent extends HTMLElement{
                     margin-block:var(--space-block-md);
                 }
 
-                .form{                    
-                    font-size:1.2rem;
+                .form{
                     padding-inline:var(--space-inline-md);
                     padding-block:var(--space-block-md);                        
                     margin-inline:var(--space-inline-sm);

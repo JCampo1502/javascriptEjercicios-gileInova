@@ -83,7 +83,7 @@ export class AppMainComponent extends HTMLElement{
             List.appendChild(Btn);
         });
         
-        H5.classList.add("main__task_title")
+        H5.classList.add("main__title--tasks")
         Nav.classList.add("main__nav");
         List.classList.add("main__list");
         Task.classList.add("main__content");
@@ -153,8 +153,13 @@ export class AppMainComponent extends HTMLElement{
             }
 
             .main__title{
-                font-size:var(--font-size-h1);
+                font-size:var(--font-size-lg);
+            }
 
+            .main__title--tasks{
+                font-size:var(--font-size-md);
+                margin-inline:var(--space-inline-sm);
+                margin-block:var(--space-block-sm);
             }
 
             .main__nav{
@@ -169,12 +174,7 @@ export class AppMainComponent extends HTMLElement{
                 border-radius:0 0 var(--border-radius-x2) var(--border-radius-x2);
                 z-index:var(--zindex-sticky);              
                 max-width:100%;
-            }
-
-            .main__task_title{
-                font-size:calc(1rem + .5vw);
-                margin-inline:var(--space-inline-sm);
-                margin-block:var(--space-block-sm);
+                
             }
 
             .main__list{                    
@@ -182,7 +182,7 @@ export class AppMainComponent extends HTMLElement{
                 margin-block:var(--space-block-sm);                
                 display:flex;
                 overflow-x:auto;
-                overflow-y:auto;     
+                overflow-y:auto; 
                  
             }
 
@@ -193,41 +193,37 @@ export class AppMainComponent extends HTMLElement{
                 
             }
 
-            p{
-                font-size:var(--font-size-md);
-            }
-
             h2{
-                font-size:var(--font-size-xl);
-            }
-
-            h3{
                 font-size:var(--font-size-lg);
             }
 
-            @media (min-width: 992px){
-                p{
-                    font-size:1.2rem;
-                }
-    
-                h2{
-                    font-size:2rem;
-                }
-    
-                h3{
-                    font-size:1.5rem;
-                }
+            h3{
+                font-size:var(--font-size-md);
+            }
+
+            p{
+                font-size:var(--font-size-sm);
             }
 
             @media (min-width: 768px){
-                .main__task_title{
-                    font-size:1.5rem;
-                }
-
                 .main{
                     position:relative;
                 }
-                
+
+                .main__title{
+                    position:absolute;
+                    top:3rem;
+                    max-width:80%;               
+                    font-size:var(--font-size-xl);
+
+                }
+
+                .main__title--taks{
+                    position:static;
+                    width:100%;
+                    font-size:var(--font-size-md);
+                }
+
                 .main__content{
                     display:block;
                     max-width:80%;
@@ -238,29 +234,21 @@ export class AppMainComponent extends HTMLElement{
                     left:85%;
                     top:3rem;                
                     width:120px;  
-                    flex-direction:column;              
-                    max-height:240px;
+                    flex-direction:column;
+                    max-height:200px;
                     
                 }
-
-                .main__title{
-                    position:absolute;
-                    top:3rem;
-                    max-width:80%;
-                    font-size:3.5rem;
-                }
-
+                    
                 .main__list{                    
                     padding:0;
                     margin-block:var(--space-block-sm);
                     display:block;
-                    height:162px          
+                    max-height:190px;          
                 }
 
-                .main__btn{
-                    min-width:auto;
-                    margin-inline:var(--space-block-sm);
-                    margin-bottom:0;
+                .main__btn{                    
+                    display:flex;
+                    justify-content:center;
                 }
 
                 .main__list::-webkit-scrollbar{
@@ -310,6 +298,23 @@ const Sections = [
                 name:'Tarea 04',
                 taq:'app-task-04'
             },
+        ]
+    },
+    {
+        name:"🎢 Estructuras Secuenciales",
+        tasks:[
+            {
+                name:'Tarea 01',
+                taq:'app-task-05'
+            },
+            {
+                name:'Tarea 02',
+                taq:'app-task-06'
+            },
+            {
+                name:'Tarea 03',
+                taq:'app-task-07'
+            }
         ]
     }
 ]

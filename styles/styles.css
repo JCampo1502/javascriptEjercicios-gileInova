@@ -16,10 +16,10 @@
     --blue-dark:#303846;
     --yellow:#fff740;
 
-    --font-size-xl:calc(1rem + 1vw);
-    --font-size-lg:calc(1rem + .6vw);
-    --font-size-md:calc(1rem + .5vh);
-    --font-size-sm:calc(.8rem + .2vw);    
+    --font-size-xl:min(calc(1rem + 3vw),  3rem);
+    --font-size-lg:min(calc(1rem + .6vw), 2rem);
+    --font-size-md:min(calc(1rem + .5vh), 1.5rem);
+    --font-size-sm:min(calc(.8rem + .2vw),1rem);
 
     --border-radius:0.4rem;
     --border-radius-x2:0.8rem;

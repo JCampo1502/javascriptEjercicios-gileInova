@@ -9,16 +9,8 @@ export class AppFooterComponent extends HTMLElement{
         this.render()                
     }
 
-    disconnectedCallback(){
-
-    }
-
     render(){
         this.shadowRoot.innerHTML = this.#htmlTemplate;
-    }
-
-    #changeSection(){
-
     }
 
     static get #cssTemplateStyles(){
@@ -28,7 +20,7 @@ export class AppFooterComponent extends HTMLElement{
                 background:var(--blue-dark);
                 color:var(--white);
                 font-family:'Now', var(--font-family);
-                font-size:calc(.5rem + .2vw);
+                font-size:var(--font-size-sm);
                 z-index: var(--zindex-fixed);   
                 position:relative;
                 margin-top:1rem;                

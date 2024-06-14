@@ -98,7 +98,7 @@ export class AppTableComponent extends HTMLElement{
             }
 
             .table{
-                font-size:calc(1rem + .2vw);
+                font-size:var(--font-size-sm);
                 font-family:'Now',var(--font-family);
                 width:100%;
                 border-collapse:collapse;
@@ -142,11 +142,7 @@ export class AppTableComponent extends HTMLElement{
                 text-wrap:nowrap;
             }
 
-            @media (min-width: 1200px){
-                .table{
-                    font-size:1.3rem;
-                }
-
+            @media (min-width: 992px){
                 :host{
                     margin-block:var(--space-block-md);
                     margin-inline:var(--space-inline-md);

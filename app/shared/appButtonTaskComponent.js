@@ -93,8 +93,7 @@ export class AppButtonTaskComponent extends HTMLElement{
     static get #cssTemplateStyles(){
         return /* css */`
             :host{
-                display:block;                
-                
+                display:block;
             }
             
             /* font-size:calc(1rem + 1vw); */
@@ -103,7 +102,7 @@ export class AppButtonTaskComponent extends HTMLElement{
                 font-family:'Now',var(--font-family);
                 font-weight:600;
                 width:100%;
-                font-size: calc(.86rem + 1vw);
+                font-size: var(--font-size-md);
                 padding-block:var(--space-block-sm);
                 padding-inline:var(--space-inline-sm);
                 text-align:start;
@@ -127,14 +126,18 @@ export class AppButtonTaskComponent extends HTMLElement{
                 font-family:'Now',var(--font-family);
                 font-weight:600;
                 font-size:var(--font-size-sm);
-                background:var(--blue);
                 color:var(--white);
+
+                background:var(--blue);
+
                 padding-block:var(--space-block-sm);
                 padding-inline:var(--space-inline-sm);
-                margin-block:var(--space-block-sm);
+                margin-block:calc(var(--space-block-sm) / 2);
+
                 border:none;
                 border-radius:var(--border-radius);
-                transition: background .1s ease-in-out;
+
+                transition: background .1s ease-in-out;                
             }
 
             .task-btn:hover{
@@ -143,16 +146,6 @@ export class AppButtonTaskComponent extends HTMLElement{
 
             .task-btn.selected{
                 background:var(--strong);
-            }
-
-            @media (min-width: 992px){
-                .navbar-btn{
-                    font-size: 1rem                    
-                }                
-                .task-btn{
-                    font-size: .92rem;
-                    max-height:1.68rem;
-                }
             }
         `;
     }

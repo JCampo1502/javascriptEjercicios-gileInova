@@ -4,7 +4,7 @@
 
 En este proyecto se realizarán los ejercicios de la sección de JavaScript.
 
-### 📣 Recomendaciones
+### ⚠️ Recomendaciones
   **Visual studio Code Extensions**
   - [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
   - [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html)
@@ -44,6 +44,14 @@ Gracias a **Agile Inova** por la oportunidad que me ha dado.
 
 #### Ejercicio 04
 ![Ejercicio 04](https://github.com/JCampo1502/javascriptEjerciciosAgileInova/blob/main/images/task-04.png?raw=true)
+
+### Conceptos Basicos
+#### Ejercicio 01
+![Ejercicio 05](https://github.com/JCampo1502/javascriptEjerciciosAgileInova/blob/main/images/task-05.png?raw=true)
+#### Ejercicio 02
+![Ejercicio 06](https://github.com/JCampo1502/javascriptEjerciciosAgileInova/blob/main/images/task-06.png?raw=true)
+#### Ejercicio 03
+![Ejercicio 07](https://github.com/JCampo1502/javascriptEjerciciosAgileInova/blob/main/images/task-07.png?raw=true)
 
 ## 🔗 Referencias
  - [Webcomponents](https://lenguajejs.com/webcomponents/componentes/que-son-webcomponents/)
