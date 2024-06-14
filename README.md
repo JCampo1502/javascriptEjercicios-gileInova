@@ -31,7 +31,7 @@ Gracias a **Agile Inova** por la oportunidad que me ha dado.
 
 ![Movile Version Menu Open](https://github.com/JCampo1502/javascriptEjerciciosAgileInova/blob/main/images/movile-open.png?raw=true)
 
-### Conceptos Basicos
+### 🚀 Conceptos Basicos
 #### Ejercicio 01
 ![Ejercicio 01 parte 1](https://github.com/JCampo1502/javascriptEjerciciosAgileInova/blob/main/images/task-01-1.png?raw=true)
 ![Ejercicio 01 parte 2](https://github.com/JCampo1502/javascriptEjerciciosAgileInova/blob/main/images/task-01-2.png?raw=true)
@@ -45,7 +45,7 @@ Gracias a **Agile Inova** por la oportunidad que me ha dado.
 #### Ejercicio 04
 ![Ejercicio 04](https://github.com/JCampo1502/javascriptEjerciciosAgileInova/blob/main/images/task-04.png?raw=true)
 
-### Conceptos Basicos
+### 🎢 Estructuras Secuenciales
 #### Ejercicio 01
 ![Ejercicio 05](https://github.com/JCampo1502/javascriptEjerciciosAgileInova/blob/main/images/task-05.png?raw=true)
 #### Ejercicio 02
