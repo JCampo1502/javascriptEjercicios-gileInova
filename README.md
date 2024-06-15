@@ -55,5 +55,8 @@ Gracias a **Agile Inova** por la oportunidad que me ha dado.
 #### Ejercicio 03
 ![Ejercicio 07](https://github.com/JCampo1502/javascriptEjerciciosAgileInova/blob/main/images/task-07.png?raw=true)
 
+### 🌳 Estructuras Condicionales
+### 🔄 Estructuras Ciclicas
+
 ## 🔗 Referencias
  - [Webcomponents](https://lenguajejs.com/webcomponents/componentes/que-son-webcomponents/)

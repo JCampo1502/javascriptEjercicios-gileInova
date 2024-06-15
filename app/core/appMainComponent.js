@@ -1,6 +1,6 @@
 
 export class AppMainComponent extends HTMLElement{
-    static #CurrentSection = 1;
+    static #CurrentSection = 3;
     static #CurrentTask = 1;
 
     constructor(){
@@ -314,6 +314,48 @@ const Sections = [
             {
                 name:'Tarea 03',
                 taq:'app-task-07'
+            }
+        ]
+    },
+    {
+        name:"🌳 Estructuras Condicionales",
+        tasks:[
+            {
+                name:'Tarea 01',
+                taq:'app-task-08'
+            },
+            {
+                name:'Tarea 02',
+                taq:'app-task-09'
+            },
+            {
+                name:'Tarea 03',
+                taq:'app-task-10'
+            },
+            {
+                name:'Tarea 04',
+                taq:'app-task-11'
+            }
+        ]
+    },
+    {
+        name:"🔄 Estructuras Ciclicas",
+        tasks:[
+            {
+                name:'Tarea 01',
+                taq:'app-task-12'
+            },
+            {
+                name:'Tarea 02',
+                taq:'app-task-13'
+            },
+            {
+                name:'Tarea 03',
+                taq:'app-task-14'
+            },
+            {
+                name:'Tarea 04',
+                taq:'app-task-15'
             }
         ]
     }
