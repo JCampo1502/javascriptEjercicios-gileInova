@@ -36,6 +36,21 @@ import { AppTask17Component } from './core/tasks/appTask17Component.js';
 import { AppTask18Component } from './core/tasks/appTask18Component.js';
 import { AppTask19Component } from './core/tasks/appTask19Component.js';
 
+/* Section 07 */
+import { AppTask20Component } from './core/tasks/appTask20Component.js';
+import { AppTask21Component } from './core/tasks/appTask21Component.js';
+import { AppTask22Component } from './core/tasks/appTask22Component.js';
+
+/* Section 08 */
+import { AppTask23Component } from './core/tasks/appTask23Component.js';
+import { AppTask24Component } from './core/tasks/appTask24Component.js';
+import { AppTask25Component } from './core/tasks/appTask25Component.js';
+
+/* Section 09 */
+import { AppTask26Component } from './core/tasks/appTask26Component.js';
+import { AppTask27Component } from './core/tasks/appTask27Component.js';
+import { AppTask28Component } from './core/tasks/appTask28Component.js';
+
 
 /* Layout */
 import { AppHeaderComponent } from './core/appHeaderComponent.js';
