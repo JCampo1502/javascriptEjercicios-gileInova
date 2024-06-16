@@ -6,7 +6,7 @@ export class AppTask27Component extends HTMLElement{
 
         /* Add Events */
         document.addEventListener(
-            'form-event-dispatcher:perimeter',
+            'form-event-dispatcher:pets',
             this.#updateTable.bind(this)
         );
     }
@@ -19,7 +19,7 @@ export class AppTask27Component extends HTMLElement{
 
         /* Remove Events */
         document.removeEventListener(
-            'form-event-dispatcher:perimeter',
+            'form-event-dispatcher:pets',
             this.#updateTable.bind(this)
         );
     }
@@ -31,7 +31,7 @@ export class AppTask27Component extends HTMLElement{
         /* Set Atributtes and Classes */
         Table.classList.add('section__table');
         Control.classList.add('section__control');
-        Control.setAttribute('event-name','perimeter');
+        Control.setAttribute('event-name','pets');
 
         /* Add Content */
         Table.heads = [/* Add Table Th */]
@@ -85,10 +85,10 @@ export class AppTask27Component extends HTMLElement{
         <section class='section'>
             <article class='section__article'>
                 <h2 class='section__title'>
-                    Tarea #3 - Perímetro
+                    Tarea #2 - Mascotas
                 </h2>
                 <p class='section__description'>
-                    Hallar el área y el perímetro de un rectángulo. Implementar funciones.
+                    Crear dos objetos, uno de mascotas y el otro de electrodomésticos. Almacenarlos en el local storage.
                 </p>
             </article>
         </section>

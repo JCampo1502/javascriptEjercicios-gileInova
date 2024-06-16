@@ -85,10 +85,10 @@ export class AppTask23Component extends HTMLElement{
         <section class='section'>
             <article class='section__article'>
                 <h2 class='section__title'>
-                    Tarea #2 - Arreglo Parte #02
+                    Tarea #1 - Arreglo Parte #01
                 </h2>
                 <p class='section__description'>
-                    Tomar el ejercicio de la Tarea-01 adicionar elementos a la última posición con push, eliminar elementos de una posición que se le indique con splice.
+                    Crear un arreglo (temática libre), el cual sea recorrido con la función map() e imprimir por consola cada uno de sus elementos.
                 </p>
             </article>
         </section>
@@ -97,3 +97,4 @@ export class AppTask23Component extends HTMLElement{
 
 }
 customElements.define('app-task-23',AppTask23Component)
+

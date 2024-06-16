@@ -6,7 +6,7 @@ export class AppTask26Component extends HTMLElement{
 
         /* Add Events */
         document.addEventListener(
-            'form-event-dispatcher:pets',
+            'form-event-dispatcher:user',
             this.#updateTable.bind(this)
         );
     }
@@ -19,7 +19,7 @@ export class AppTask26Component extends HTMLElement{
 
         /* Remove Events */
         document.removeEventListener(
-            'form-event-dispatcher:pets',
+            'form-event-dispatcher:user',
             this.#updateTable.bind(this)
         );
     }
@@ -31,7 +31,7 @@ export class AppTask26Component extends HTMLElement{
         /* Set Atributtes and Classes */
         Table.classList.add('section__table');
         Control.classList.add('section__control');
-        Control.setAttribute('event-name','pets');
+        Control.setAttribute('event-name','user');
 
         /* Add Content */
         Table.heads = [/* Add Table Th */]
@@ -85,10 +85,10 @@ export class AppTask26Component extends HTMLElement{
         <section class='section'>
             <article class='section__article'>
                 <h2 class='section__title'>
-                    Tarea #2 - Mascotas
+                    Tarea #1 - User
                 </h2>
                 <p class='section__description'>
-                    Crear dos objetos, uno de mascotas y el otro de electrodomésticos. Almacenarlos en el local storage.
+                    Capturar usuario y contraseña desde cajas de texto y almacenar la información en el localstorage en variables separadas.
                 </p>
             </article>
         </section>

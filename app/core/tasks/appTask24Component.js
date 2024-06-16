@@ -6,7 +6,7 @@ export class AppTask24Component extends HTMLElement{
 
         /* Add Events */
         document.addEventListener(
-            'form-event-dispatcher:json-exercise',
+            'form-event-dispatcher:array-exercise',
             this.#updateTable.bind(this)
         );
     }
@@ -19,7 +19,7 @@ export class AppTask24Component extends HTMLElement{
 
         /* Remove Events */
         document.removeEventListener(
-            'form-event-dispatcher:json-exercise',
+            'form-event-dispatcher:array-exercise',
             this.#updateTable.bind(this)
         );
     }
@@ -31,7 +31,7 @@ export class AppTask24Component extends HTMLElement{
         /* Set Atributtes and Classes */
         Table.classList.add('section__table');
         Control.classList.add('section__control');
-        Control.setAttribute('event-name','json-exercise');
+        Control.setAttribute('event-name','array-exercise');
 
         /* Add Content */
         Table.heads = [/* Add Table Th */]
@@ -85,10 +85,10 @@ export class AppTask24Component extends HTMLElement{
         <section class='section'>
             <article class='section__article'>
                 <h2 class='section__title'>
-                    Tarea #3 - JSON
+                    Tarea #2 - Arreglo Parte #02
                 </h2>
                 <p class='section__description'>
-                    Hacer un arreglo de objetos JSON y almacenarlo en el localstorage.
+                    Tomar el ejercicio de la Tarea-01 adicionar elementos a la última posición con push, eliminar elementos de una posición que se le indique con splice.
                 </p>
             </article>
         </section>

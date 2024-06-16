@@ -6,7 +6,7 @@ export class AppTask25Component extends HTMLElement{
 
         /* Add Events */
         document.addEventListener(
-            'form-event-dispatcher:user',
+            'form-event-dispatcher:json-exercise',
             this.#updateTable.bind(this)
         );
     }
@@ -19,7 +19,7 @@ export class AppTask25Component extends HTMLElement{
 
         /* Remove Events */
         document.removeEventListener(
-            'form-event-dispatcher:user',
+            'form-event-dispatcher:json-exercise',
             this.#updateTable.bind(this)
         );
     }
@@ -31,7 +31,7 @@ export class AppTask25Component extends HTMLElement{
         /* Set Atributtes and Classes */
         Table.classList.add('section__table');
         Control.classList.add('section__control');
-        Control.setAttribute('event-name','user');
+        Control.setAttribute('event-name','json-exercise');
 
         /* Add Content */
         Table.heads = [/* Add Table Th */]
@@ -85,10 +85,10 @@ export class AppTask25Component extends HTMLElement{
         <section class='section'>
             <article class='section__article'>
                 <h2 class='section__title'>
-                    Tarea #1 - User
+                    Tarea #3 - JSON
                 </h2>
                 <p class='section__description'>
-                    Capturar usuario y contraseña desde cajas de texto y almacenar la información en el localstorage en variables separadas.
+                    Hacer un arreglo de objetos JSON y almacenarlo en el localstorage.
                 </p>
             </article>
         </section>

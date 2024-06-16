@@ -6,7 +6,7 @@ export class AppTask22Component extends HTMLElement{
 
         /* Add Events */
         document.addEventListener(
-            'form-event-dispatcher:array-exercise',
+            'form-event-dispatcher:perimeter',
             this.#updateTable.bind(this)
         );
     }
@@ -19,7 +19,7 @@ export class AppTask22Component extends HTMLElement{
 
         /* Remove Events */
         document.removeEventListener(
-            'form-event-dispatcher:array-exercise',
+            'form-event-dispatcher:perimeter',
             this.#updateTable.bind(this)
         );
     }
@@ -31,7 +31,7 @@ export class AppTask22Component extends HTMLElement{
         /* Set Atributtes and Classes */
         Table.classList.add('section__table');
         Control.classList.add('section__control');
-        Control.setAttribute('event-name','array-exercise');
+        Control.setAttribute('event-name','perimeter');
 
         /* Add Content */
         Table.heads = [/* Add Table Th */]
@@ -85,10 +85,10 @@ export class AppTask22Component extends HTMLElement{
         <section class='section'>
             <article class='section__article'>
                 <h2 class='section__title'>
-                    Tarea #1 - Arreglo Parte #01
+                    Tarea #3 - Perímetro
                 </h2>
                 <p class='section__description'>
-                    Crear un arreglo (temática libre), el cual sea recorrido con la función map() e imprimir por consola cada uno de sus elementos.
+                    Hallar el área y el perímetro de un rectángulo. Implementar funciones.
                 </p>
             </article>
         </section>
