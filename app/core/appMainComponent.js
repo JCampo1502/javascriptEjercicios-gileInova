@@ -358,6 +358,83 @@ const Sections = [
                 taq:'app-task-15'
             }
         ]
+    },
+    {
+        name:"📁 DOM",
+        tasks:[
+            {
+                name:'Tarea 01',
+                taq:'app-task-16'
+            }
+        ]
+    },
+    {
+        name:"🕘 Eventos",
+        tasks:[
+            {
+                name:'Tarea 01',
+                taq:'app-task-17'
+            },
+            {
+                name:'Tarea 02',
+                taq:'app-task-18'
+            },
+            {
+                name:'Tarea 03',
+                taq:'app-task-19'
+            }
+        ]
+    },
+    {
+        name:"✨ Funciones",
+        tasks:[
+            {
+                name:'Tarea 01',
+                taq:'app-task-20'
+            },
+            {
+                name:'Tarea 02',
+                taq:'app-task-21'
+            },
+            {
+                name:'Tarea 03',
+                taq:'app-task-22'
+            }
+        ]
+    },
+    {
+        name:"📦 Arreglos",
+        tasks:[
+            {
+                name:'Tarea 01',
+                taq:'app-task-23'
+            },
+            {
+                name:'Tarea 02',
+                taq:'app-task-24'
+            },
+            {
+                name:'Tarea 03',
+                taq:'app-task-25'
+            }
+        ]
+    },
+    {
+        name:"🤖 Objetos",
+        tasks:[
+            {
+                name:'Tarea 01',
+                taq:'app-task-26'
+            },
+            {
+                name:'Tarea 02',
+                taq:'app-task-27'
+            },
+            {
+                name:'Tarea 03',
+                taq:'app-task-28'
+            }
+        ]
     }
 ]
 

@@ -15,6 +15,7 @@
     --blue-strong:#0096be;
     --blue-dark:#303846;
     --yellow:#fff740;
+    --backdrop:#000000ab;
 
     --font-size-xl:min(calc(1rem + 3vw),  3rem);
     --font-size-lg:min(calc(1rem + .6vw), 2rem);
