@@ -1,5 +1,33 @@
 export class AppTask28Component extends HTMLElement{
-    #state = {}
+    #state = {
+        name: 'Unknown', 
+        lastname:'Unknown', 
+        phone:'+57 000-000-0000',
+        address:'Unknown',
+        gender:'Unknown',
+        userName:'Unknown',
+        password:'123456',
+        getObj(){
+            return {
+                name: this.toCapitalize(this.name),
+                lastname: this.toCapitalize(this.lastname),
+                phone: this.phone,
+                address: this.address,
+                gender: this.toCapitalize(this.gender),
+                userName: this.userName,
+                password: this.password
+            }
+        },
+
+        toCapitalize(item = ''){
+            item = item.split(' ').filter(x => x != '').map(x => {
+                x.toLowerCase();
+                let firstLetter = x[0];
+                return firstLetter.toUpperCase() + x.slice(1,x.length);
+            });
+            return item.join(' ')
+        }
+    }
 
     constructor(){
         super();
@@ -34,15 +62,52 @@ export class AppTask28Component extends HTMLElement{
         Control.setAttribute('event-name','login');
 
         /* Add Content */
-        Table.heads = [/* Add Table Th */]
+        Table.heads = ['-','Info']
         Table.rows = this.#tableContent;
         Control.formInputs = [
-            /*{
-            name: id, 
-            description: label, 
-            value:default value or value, 
-            type:input type
-            }*/
+            {
+                name:'name',
+                description:'Nombres',
+                value:this.#storedObjects.name,
+                type:'string'
+            },
+            {
+                name:'lastname',
+                description:'Apellidos',
+                value:this.#storedObjects.lastname,
+                type:'string'
+            },
+            {
+                name:'phone',
+                description:'Teléfono',
+                value:this.#storedObjects.phone,
+                type:'string'
+            },
+            {
+                name:'address',
+                description:'Dirección',
+                value:this.#storedObjects.address,
+                type:'string'
+            },
+            {
+                name:'gender',
+                description:'Genero',
+                value:this.#storedObjects.gender,
+                type:'string'
+            },
+            {
+                name:'userName',
+                description:'Usuario',
+                value:this.#storedObjects.userName,
+                type:'string'
+            },
+            {
+                name:'password',
+                description:'Contraseña',
+                value:this.#storedObjects.password,
+                type:'string'
+            }
+            
         ]
 
         /* Add in template  */
@@ -66,7 +131,7 @@ export class AppTask28Component extends HTMLElement{
         /* Update State */
         Obj[name] = value;
         this.#updateState(Obj);
-
+        this.#storedObjects = this.#state.getObj();
         /* Update Table */
         Table.rows = this.#tableContent;
         Table.render();
@@ -76,8 +141,27 @@ export class AppTask28Component extends HTMLElement{
         this.#state = {...this.#state, ...newState}
     }
 
+    get #storedObjects(){
+        if(!localStorage.getItem('app-task-28'))this.#storedObjects = this.#state.getObj();
+        const Data = localStorage.getItem('app-task-28');        
+        return JSON.parse(Data);
+    }
+
+    set #storedObjects(Obj){
+        localStorage.setItem('app-task-28',JSON.stringify(Obj));
+    }
+
     get #tableContent(){
-        return [[/* Row */]];
+        const User = this.#storedObjects;
+        return [[
+            'Nombres',User.name],
+            ['Apellidos',User.lastname],
+            ['Teléfono',User.phone],
+            ['Dirección',User.address],
+            ['Genero',User.gender],
+            ['Usuario',User.userName],
+            ['Contraseña',User.passwor]
+        ];
     }
 
     get #htmlTemplate(){

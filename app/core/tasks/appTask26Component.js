@@ -1,5 +1,8 @@
 export class AppTask26Component extends HTMLElement{
-    #state = {}
+    #state = {
+        userName:'Unknown',
+        userPassword:'123456'
+    }
 
     constructor(){
         super();
@@ -34,15 +37,21 @@ export class AppTask26Component extends HTMLElement{
         Control.setAttribute('event-name','user');
 
         /* Add Content */
-        Table.heads = [/* Add Table Th */]
+        Table.heads = ['Usuario', 'Contraseña']
         Table.rows = this.#tableContent;
         Control.formInputs = [
-            /*{
-            name: id, 
-            description: label, 
-            value:default value or value, 
-            type:input type
-            }*/
+            {
+                name: 'userName', 
+                description: 'Nombre de Usuario', 
+                value:this.#getUser()?.name ?? 'Unknown', 
+                type:'string'
+            },
+            {
+                name: 'userPassword', 
+                description: 'Contraseña', 
+                value:this.#getUser()?.password ?? '123456', 
+                type:'string'
+            }
         ]
 
         /* Add in template  */
@@ -50,12 +59,27 @@ export class AppTask26Component extends HTMLElement{
         this.querySelector('.section__article').append(Control, Table);
     }
 
-    #updateTable(e){
+    #getUser(){
+        const userInfo = localStorage.getItem('task-26-user');
+        if(userInfo == null)return;
+        return JSON.parse(userInfo);
+    }
+
+    #setUser(){
+        const User = {
+            name: this.#state.userName,
+            password: this.#state.userPassword
+        };
+
+        console.log(JSON.stringify(User));
+        localStorage.setItem('task-26-user',JSON.stringify(User));
+    }
+
+    #updateTable(e){        
         const Obj = new Object();
         const Table = this.querySelector('.section__table');
         let value = e.detail.value;
-        let name = e.detail.name;
-
+        let name = e.detail.name;        
         /* Validations */
         if(
             !Table || 
@@ -68,6 +92,8 @@ export class AppTask26Component extends HTMLElement{
         this.#updateState(Obj);
 
         /* Update Table */
+        
+        this.#setUser();
         Table.rows = this.#tableContent;
         Table.render();
     }
@@ -77,7 +103,10 @@ export class AppTask26Component extends HTMLElement{
     }
 
     get #tableContent(){
-        return [[/* Row */]];
+        return [[
+            this.#getUser()?.name ?? 'Unknown',
+            this.#getUser()?.password ?? '123456'
+        ]];
     }
 
     get #htmlTemplate(){

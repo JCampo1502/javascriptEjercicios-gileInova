@@ -1,5 +1,31 @@
 export class AppTask25Component extends HTMLElement{
-    #state = {}
+    #state = {        
+        getWords(){
+            let data = localStorage.getItem("app-task-25");
+            if(!data) return [];
+
+            data = JSON.parse(data);
+            return this.filterWords(data.words);
+                
+        },
+
+        addWords(words = ''){
+            const Obj = new Object();
+            let newWords = this.filterWords(words.split(','));
+            Obj['words'] = newWords;
+            localStorage.setItem("app-task-25",JSON.stringify(Obj));
+        },
+
+        filterWords(words = []){
+            return words
+            .filter(x => typeof(x)=='string' && x != '')
+            .map(x => {
+                x = x.toLowerCase().trim();
+                let firstLetter = x.slice(0,1);
+                return firstLetter.toUpperCase() + x.slice(1,x.length);
+            })
+        }
+    }
 
     constructor(){
         super();
@@ -34,15 +60,15 @@ export class AppTask25Component extends HTMLElement{
         Control.setAttribute('event-name','json-exercise');
 
         /* Add Content */
-        Table.heads = [/* Add Table Th */]
+        Table.heads = ['#', 'Elementos']
         Table.rows = this.#tableContent;
         Control.formInputs = [
-            /*{
-            name: id, 
-            description: label, 
-            value:default value or value, 
-            type:input type
-            }*/
+            {
+                name: 'words', 
+                description: 'Ingresa el contenido del array separado por ","', 
+                value:this.#state.getWords().join(', '), 
+                type:"string"
+            }
         ]
 
         /* Add in template  */
@@ -51,33 +77,21 @@ export class AppTask25Component extends HTMLElement{
     }
 
     #updateTable(e){
-        const Obj = new Object();
         const Table = this.querySelector('.section__table');
-        let value = e.detail.value;
-        let name = e.detail.name;
+        let value = e.detail.value;        
 
         /* Validations */
-        if(
-            !Table || 
-            !Object.hasOwn(this.#state, name) || 
-            !value || this.#state[name] == value
-        )return;
-
-        /* Update State */
-        Obj[name] = value;
-        this.#updateState(Obj);
+        if(!Table)return;
+        /* Update State */        
+        this.#state.addWords(value);
 
         /* Update Table */
         Table.rows = this.#tableContent;
         Table.render();
     }
 
-    #updateState(newState){
-        this.#state = {...this.#state, ...newState}
-    }
-
     get #tableContent(){
-        return [[/* Row */]];
+        return this.#state.getWords().map((x,i)=>[i+1,x]);
     }
 
     get #htmlTemplate(){

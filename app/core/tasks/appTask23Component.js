@@ -1,5 +1,25 @@
 export class AppTask23Component extends HTMLElement{
-    #state = {}
+    #state = {
+        animals:[            
+            'gato',
+            'perro'            
+        ],
+        keyWord:'',
+        getAnimal(){            
+            return this.animals
+            .filter(x => typeof(x)=='string' && x != '')
+            .filter(x => 
+                this.keyWord != ''
+                ? x.toLowerCase().startsWith(this.keyWord.toLowerCase())
+                : true
+            ).map(x =>{
+                x = x.trim();
+                let firstLetter = x.slice(0,1);
+                return firstLetter.toUpperCase() + x.slice(1,x.length);
+            })
+
+        }
+    }
 
     constructor(){
         super();
@@ -34,15 +54,21 @@ export class AppTask23Component extends HTMLElement{
         Control.setAttribute('event-name','array-exercise');
 
         /* Add Content */
-        Table.heads = [/* Add Table Th */]
+        Table.heads = ["#","Animal"]
         Table.rows = this.#tableContent;
         Control.formInputs = [
-            /*{
-            name: id, 
-            description: label, 
-            value:default value or value, 
-            type:input type
-            }*/
+            {
+                name: 'animals', 
+                description:"ingresa los animales separados por \",\"", 
+                value:this.#state.getAnimal().join(', '), 
+                type:"string"
+            },
+            {
+                name: "keyWord", 
+                description:"Ingresa el animal a buscar", 
+                value: this.#state.keyWord, 
+                type:'string'
+            }
         ]
 
         /* Add in template  */
@@ -58,13 +84,18 @@ export class AppTask23Component extends HTMLElement{
 
         /* Validations */
         if(
-            !Table || 
+            !Table ||             
             !Object.hasOwn(this.#state, name) || 
-            !value || this.#state[name] == value
+            (!value &&  name != 'keyWord') || this.#state[name] == value
         )return;
 
         /* Update State */
-        Obj[name] = value;
+        if(name == "animals"){
+            value = value.split(',');
+        }
+
+        Obj[name] = value;        
+
         this.#updateState(Obj);
 
         /* Update Table */
@@ -77,7 +108,7 @@ export class AppTask23Component extends HTMLElement{
     }
 
     get #tableContent(){
-        return [[/* Row */]];
+        return this.#state.getAnimal().map((x,i)=> [i+1,x]);
     }
 
     get #htmlTemplate(){

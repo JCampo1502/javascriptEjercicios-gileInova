@@ -1,5 +1,7 @@
 export class AppTask20Component extends HTMLElement{
-    #state = {}
+    #state = {
+        numbers:[-1,-2,-3,0,1,2,3]
+    }
 
     constructor(){
         super();
@@ -34,15 +36,15 @@ export class AppTask20Component extends HTMLElement{
         Control.setAttribute('event-name','print-numbers');
 
         /* Add Content */
-        Table.heads = [/* Add Table Th */]
+        Table.heads = ["Positivos", "Negativos", "Neutros"]
         Table.rows = this.#tableContent;
         Control.formInputs = [
-            /*{
-            name: id, 
-            description: label, 
-            value:default value or value, 
-            type:input type
-            }*/
+            {
+                name: "numbers", 
+                description: "ingrese los numeros separados por ,", 
+                value:this.#state.numbers.join(","), 
+                type:"string"
+            }
         ]
 
         /* Add in template  */
@@ -50,22 +52,20 @@ export class AppTask20Component extends HTMLElement{
         this.querySelector('.section__article').append(Control, Table);
     }
 
-    #updateTable(e){
-        const Obj = new Object();
+    #updateTable(e){        
         const Table = this.querySelector('.section__table');
         let value = e.detail.value;
-        let name = e.detail.name;
 
         /* Validations */
         if(
-            !Table || 
-            !Object.hasOwn(this.#state, name) || 
-            !value || this.#state[name] == value
+            !Table ||             
+            !value || 
+            this.#state.numbers == value
         )return;
 
-        /* Update State */
-        Obj[name] = value;
-        this.#updateState(Obj);
+        /* Update State */  
+        value = value.split(',').filter(x => !isNaN(x)).map(x => parseInt(x));
+        this.#updateState({numbers:value});
 
         /* Update Table */
         Table.rows = this.#tableContent;
@@ -77,7 +77,12 @@ export class AppTask20Component extends HTMLElement{
     }
 
     get #tableContent(){
-        return [[/* Row */]];
+        const Numbers = this.#state.numbers;
+        return [[
+            Numbers.filter(x => x < 0).length,
+            Numbers.filter(x => x > 0).length,
+            Numbers.filter(x => x == 0).length,
+        ]];
     }
 
     get #htmlTemplate(){
@@ -88,7 +93,7 @@ export class AppTask20Component extends HTMLElement{
                 Tarea #1 - Imprimir números positivos negativos y neutros
             </h2>
             <p class='section__description'>
-            Leer 20 números e imprimir cuantos son positivos, negativos y neutros, realizar el ejercicio con funciones.
+                Leer 20 números e imprimir cuantos son positivos, negativos y neutros, realizar el ejercicio con funciones.
             </p>
             </article>
         </section>

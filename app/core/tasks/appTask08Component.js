@@ -5,7 +5,7 @@ export class AppTask08Component extends HTMLElement{
     }
 
     #stateFactory = {
-
+        value:600000
     }
 
     constructor(){
@@ -14,12 +14,12 @@ export class AppTask08Component extends HTMLElement{
         /* Add Events */
         document.addEventListener(
             'form-event-dispatcher:peyment-calculator',
-            this.#updateTablePeyment.bind(this)
+            this.#updatePeymentTable.bind(this)
         );
-        /* document.addEventListener(
+        document.addEventListener(
             'form-event-dispatcher:factory-calculator',
-            this.#updateTable.bind(this)
-        ); */
+            this.#updateFactoryTable.bind(this)
+        );
     }
 
     connectedCallback(){
@@ -31,84 +31,89 @@ export class AppTask08Component extends HTMLElement{
         /* Remove Events */
         document.removeEventListener(
             'form-event-dispatcher:peyment-calculator',
-            this.#updateTablePeyment.bind(this)
+            this.#updatePeymentTable.bind(this)
         );
-        /* document.removeEventListener(
+        document.removeEventListener(
             'form-event-dispatcher:factory-calculator',
-            this.#updateTable.bind(this)
-        ); */
+            this.#updateFactoryTable.bind(this)
+        );
     }
 
     render(){
-        const PeymentTable = document.createElement('app-table');
-        const PeymentControl = document.createElement('app-form-event-dispatcher');
-
-        const FactoryTable = document.createElement('app-table');
-        const FactoryControl = document.createElement('app-form-event-dispatcher');
-        
-        /* Set Atributtes and Classes */
-        PeymentTable.classList.add('section__table','section__table--exercise01');
-        PeymentControl.classList.add('section__control');
-        PeymentControl.setAttribute('event-name','peyment-calculator');
-
-        FactoryTable.classList.add('section__table','section__table--exercise02');
-        FactoryControl.classList.add('section__control');
-        FactoryControl.setAttribute('event-name','peyment-calculator');
-        
-        /* Add Content */
-        PeymentTable.heads = ["Cantidad", "Precio", "Descuento a aplicar", "Valor", "Valor con descuento"]
-        PeymentTable.rows = this.#tableContent;
-        PeymentControl.formInputs = [
-            {
-                name: "amount", 
-                description: "Ingresa la cantidad de camisetas",
-                value:this.#statePeyment.amount, 
-                type:"number"
-            },
-            {
-                name: "Price", 
-                description: "Precio por camiseta",
-                value:this.#statePeyment.price,
-                type:"number"
-            }
-        ],
-
-        PeymentTable.heads = [
-            "Cantidad", 
-            "Precio", 
-            "Descuento", 
-            "Total",
-            "Total con descuento"
-        ]
-        PeymentTable.rows = this.#tableContent;
-        PeymentControl.formInputs = [
-            {
-                name: "amount",
-                description: "Ingrese la cantidad de camisas", 
-                value:this.#statePeyment.amount, 
-                type:"number"
-            },
-            {
-                name: "price",
-                description: "Precio por camisa", 
-                value:this.#statePeyment.price, 
-                type:"number"
-            }
-        ]
-    
         /* Add in template  */
         this.innerHTML = this.#htmlTemplate;
-        this.querySelector('.section__article--exercise01').append(
-            PeymentControl, 
-            PeymentTable
-        );
+
+        /* Peyment */
+        this.#createTableAndControl({
+            className:'peyment',
+            eventName:'peyment-calculator',
+            tableHeads:[
+                "Cantidad", 
+                "Precio", 
+                "Descuento", 
+                "Total",
+                "Total con descuento"
+            ],
+            tableRows:this.#tablePeymentRows,
+            formInputs:[
+                {
+                    name: "amount",
+                    description: "Ingrese la cantidad de camisas", 
+                    value:this.#statePeyment.amount, 
+                    type:"number"
+                },            
+                {
+                    name: "price",
+                    description: "Precio por camisa", 
+                    value:this.#statePeyment.price, 
+                    type:"number"
+                }
+            ]
+
+        });
+        
+        /* Factory */
+        this.#createTableAndControl({
+            className:"factory",
+            eventName:'factory-calculator',
+            tableHeads:['-','Valor'],
+            tableRows:this.#tableFatoryRows,
+            formInputs:[
+                {
+                    name: "value",
+                    description: "Ingresa el valor", 
+                    value:this.#stateFactory.value, 
+                    type:"number"
+                }
+            ]
+        });
     }
 
-    #updateTablePeyment(e){
+    #updateFactoryTable(e){        
+        const Table = this.querySelector('.section__table--factory');
+        let value = e.detail.value;        
+        
+        /* Validations */
+        if(
+            !Table ||
+            isNaN(value) ||
+            value < 0 ||            
+            !value || this.#stateFactory.value == value
+        )return;
+        
+        /* Update State */        
+        this.#updateFactoryState({value: parseFloat(value)});
+        
+        /* Update Table */
+        Table.rows = this.#tableFatoryRows;
+        Table.render();
+    }
+
+    #updatePeymentTable(e){
         const Obj = new Object();
-        const Table = this.querySelector('.section__table--exercise01');
+        const Table = this.querySelector('.section__table--peyment');
         let value = e.detail.value;
-        let name = e.detail.name;
+        let name = e.detail.name;        
         
         /* Validations */
         if(
@@ -124,7 +129,7 @@ export class AppTask08Component extends HTMLElement{
         this.#updateStatePeyment(Obj);
         
         /* Update Table */
-        Table.rows = this.#tableContent;
+        Table.rows = this.#tablePeymentRows;
         Table.render();
     }
 
@@ -132,7 +137,39 @@ export class AppTask08Component extends HTMLElement{
         this.#statePeyment = {...this.#statePeyment, ...newState}
     }
 
-    get #tableContent(){
+    #updateFactoryState(newState){
+        this.#stateFactory = {...this.#statePeyment, ...newState}
+    }
+
+    #createTableAndControl({
+        eventName  = '', 
+        className  = '', 
+        tableHeads = [],
+        tableRows  = [],
+        formInputs = []
+    } ){
+        const PeymentTable = document.createElement('app-table');
+        const PeymentControl = document.createElement('app-form-event-dispatcher');
+        
+        /* Set Atributtes and Classes */
+        PeymentTable.classList.add('section__table',`section__table--${className}`);
+        PeymentControl.classList.add('section__control');
+        PeymentControl.setAttribute('event-name',eventName);
+        
+        /* Add Content */
+        PeymentTable.heads = tableHeads
+        PeymentTable.rows = tableRows;
+        PeymentControl.formInputs = formInputs        
+        
+    
+        /* Add in template  */        
+        this.querySelector(`.section__article--${className}`)?.append(
+            PeymentControl, 
+            PeymentTable
+        );
+    }
+
+    get #tablePeymentRows(){
         let {amount = parseInt(amount), price}= this.#statePeyment;        
         let discount = (amount >= 3 )?0.2 :0.1;
         let total = amount * price;
@@ -145,10 +182,37 @@ export class AppTask08Component extends HTMLElement{
         ]];
     }
 
+    get #tableFatoryRows(){
+        let value = this.#stateFactory.value;
+        let empresa = 0;
+        let fabricante = 0;
+        let intereses = 0;
+        let banco = 0;
+
+        if(value >= 500000){
+            empresa = value * 0.55;
+            banco = value * 0.3;     
+            fabricante = value * 0.15;                   
+        }else{
+            empresa = value * 0.7;
+            fabricante = value * 0.3;
+        }
+        intereses = fabricante * 0.2;
+
+        return [
+            ["Monto de la compra",`${value.toFixed(2)} COL`],
+            ["Propio dinero" ,`${empresa.toFixed(2)} COL`],
+            ["Prestamo banco" ,`${banco.toFixed(2)} COL`],
+            ["Credito al fabricante",`${fabricante.toFixed(2)} COL`],
+            ["Intereses por el credito al fabricante",`${intereses.toFixed(2)} COL`],
+        ];
+    }
+
     get #htmlTemplate(){
         return  /* html */`
-        <section class='section'>            
-            <article class="section__article section__article--exercise01">
+        <section class='section'>
+                   
+            <article class="section__article section__article--peyment">
                 <h2 clase="section__title">
                     Ejercicio #1 - Calcular total a pagar
                 </h2>
@@ -156,7 +220,7 @@ export class AppTask08Component extends HTMLElement{
                     Hacer un algoritmo que calcule el total a pagar por la compra de camisas. Si se compran tres camisas o más se aplica un descuento del 20% sobre el total de la compra, si son menos de tres camisas un descuento del 10%
                 </p>
             </article>
-            <article class="section__article section__article--exercise02">
+            <article class="section__article section__article--factory">
                 <h2 class="section__title">
                     Ejercicio #2 - 
                 </h2>
@@ -165,7 +229,7 @@ export class AppTask08Component extends HTMLElement{
 
                     monto Compra
                 </p>
-            </article>                
+            </article>          
         </section>
         `;
     }

@@ -1,5 +1,8 @@
 export class AppTask22Component extends HTMLElement{
-    #state = {}
+    #state = {
+        height:0,
+        width:0
+    }
 
     constructor(){
         super();
@@ -34,15 +37,21 @@ export class AppTask22Component extends HTMLElement{
         Control.setAttribute('event-name','perimeter');
 
         /* Add Content */
-        Table.heads = [/* Add Table Th */]
+        Table.heads = ["Anchura", "Altura", "Area", "Perimetro"]
         Table.rows = this.#tableContent;
         Control.formInputs = [
-            /*{
-            name: id, 
-            description: label, 
-            value:default value or value, 
-            type:input type
-            }*/
+            {
+                name: "width", 
+                description: "Anchura", 
+                value:this.#state.width, 
+                type:"number"
+            },
+            {
+                name: "height", 
+                description: "Longitud", 
+                value:this.#state.height, 
+                type:"number"
+            },
         ]
 
         /* Add in template  */
@@ -64,7 +73,7 @@ export class AppTask22Component extends HTMLElement{
         )return;
 
         /* Update State */
-        Obj[name] = value;
+        Obj[name] = parseFloat(value);
         this.#updateState(Obj);
 
         /* Update Table */
@@ -77,7 +86,13 @@ export class AppTask22Component extends HTMLElement{
     }
 
     get #tableContent(){
-        return [[/* Row */]];
+        let {width, height} = this.#state;
+        return [[            
+            width.toFixed(2),
+            height.toFixed(2),
+            (width * height).toFixed(2),
+            (2*width + 2*height).toFixed(2)
+        ]];
     }
 
     get #htmlTemplate(){

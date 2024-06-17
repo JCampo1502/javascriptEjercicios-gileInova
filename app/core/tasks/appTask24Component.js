@@ -1,5 +1,42 @@
 export class AppTask24Component extends HTMLElement{
-    #state = {}
+    #state = {
+        animals:['Dinosaurio','Dragón'],
+        keyWord:'',        
+
+        getAnimal(){            
+            return this.filterAnimals(this.animals);
+        },
+
+        addAnimals(newAnimals = []){            
+            this.animals = [];
+            newAnimals = this.filterAnimals(newAnimals);
+            newAnimals.forEach(x => this.animals.push(x));
+        },
+
+        removeAnimal(animal){            
+            if(animal == '')return;
+            let index = this.animals
+            .map(x => x.toLowerCase().trim())
+            .indexOf(animal.trim().toLowerCase())
+            console.log(index);
+            if(index == -1)return;
+            this.animals.splice(index,1);            
+        },
+
+        filterAnimals(animals){            
+            return animals
+            .filter(x => typeof(x)=='string' && x != '')
+            .filter(x => 
+                this.keyWord != ''
+                ? x.toLowerCase().startsWith(this.keyWord.toLowerCase())
+                : true
+            ).map(x =>{                
+                x = x.trim();
+                let firstLetter = x.slice(0,1);
+                return firstLetter.toUpperCase() + x.slice(1,x.length);
+            })            
+        }
+    }
 
     constructor(){
         super();
@@ -34,15 +71,28 @@ export class AppTask24Component extends HTMLElement{
         Control.setAttribute('event-name','array-exercise');
 
         /* Add Content */
-        Table.heads = [/* Add Table Th */]
+        Table.heads = ["#","Animal"]
         Table.rows = this.#tableContent;
         Control.formInputs = [
-            /*{
-            name: id, 
-            description: label, 
-            value:default value or value, 
-            type:input type
-            }*/
+            {
+                name: "animalSelected", 
+                description:"Ingresa el animal a eliminar", 
+                value: "Unknown", 
+                type:'string'
+            },
+            {
+                name: 'animals', 
+                description:"ingresa los animales separados por \",\"", 
+                value:this.#state.getAnimal().join(', '), 
+                type:"string"
+            },
+            {
+                name: "keyWord", 
+                description:"Ingresa el animal a buscar", 
+                value: this.#state.keyWord, 
+                type:'string'
+            },
+            
         ]
 
         /* Add in template  */
@@ -58,13 +108,18 @@ export class AppTask24Component extends HTMLElement{
 
         /* Validations */
         if(
-            !Table || 
-            !Object.hasOwn(this.#state, name) || 
-            !value || this.#state[name] == value
+            !Table ||            
+            (!Object.hasOwn(this.#state, name) && name!='animalSelected') || 
+            (!value &&  name != 'keyWord') || this.#state[name] == value
         )return;
 
         /* Update State */
-        Obj[name] = value;
+        if(name == "animals"){
+            value = value.split(',');
+        }
+
+        Obj[name] = value;        
+
         this.#updateState(Obj);
 
         /* Update Table */
@@ -72,24 +127,31 @@ export class AppTask24Component extends HTMLElement{
         Table.render();
     }
 
-    #updateState(newState){
-        this.#state = {...this.#state, ...newState}
+    #updateState(newState = {}){  
+        console.log(newState);        
+        if(newState.hasOwnProperty('animals')){
+            this.#state.addAnimals(newState.animals)
+        }else if(newState.hasOwnProperty('animalSelected')) {                
+            this.#state.removeAnimal(newState.animalSelected);
+        }else{
+            this.#state.keyWord = newState.keyWord.trim().toLowerCase()
+        }
     }
 
     get #tableContent(){
-        return [[/* Row */]];
+        return this.#state.getAnimal().map((x,i)=> [i+1,x]);
     }
 
     get #htmlTemplate(){
         return /* html */`
         <section class='section'>
             <article class='section__article'>
-                <h2 class='section__title'>
-                    Tarea #2 - Arreglo Parte #02
-                </h2>
-                <p class='section__description'>
-                    Tomar el ejercicio de la Tarea-01 adicionar elementos a la última posición con push, eliminar elementos de una posición que se le indique con splice.
-                </p>
+            <h2 class='section__title'>
+                Tarea #2 - Arreglo Parte #02
+            </h2>
+            <p class='section__description'>
+                Tomar el ejercicio de la Tarea-01 adicionar elementos a la última posición con push, eliminar elementos de una posición que se le indique con splice.
+            </p>
             </article>
         </section>
         `;
@@ -97,3 +159,4 @@ export class AppTask24Component extends HTMLElement{
 
 }
 customElements.define('app-task-24',AppTask24Component)
+
