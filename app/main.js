@@ -5,7 +5,7 @@ import { AppConfirmModalComponent } from './shared/appConfirmModalComponent.js';
 import { AppExeciseComponent } from './shared/appExeciseComponent.js';
 import { AppButtonTaskComponent } from './shared/appButtonTaskComponent.js';
 import { AppEventTextInputBoxComponent } from './shared/appEventTextInputBoxComponent.js';
-
+import { AppCalculatorComponent } from './shared/appCalculatorComponent.js';
 /* Exercises */
 
 /* Section 01 */

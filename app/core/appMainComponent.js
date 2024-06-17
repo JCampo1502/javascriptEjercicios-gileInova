@@ -371,6 +371,7 @@ const Sections = [
     {
         name:"🕘 Eventos",
         tasks:[
+            
             {
                 name:'Tarea 01',
                 taq:'app-task-17'
