@@ -255,7 +255,7 @@ export class AppMoviesComponent extends HTMLElement{
                 border: .5rem dotted var(--yellow);
                 padding: var(--space-block-md);
                 grid-gap:.8rem;
-                max-height:360px;
+                max-height:285px;
                 overflow-y:auto;
             }
 
