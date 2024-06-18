@@ -60,7 +60,8 @@ Gracias a **Agile Inova** por la oportunidad que me ha dado.
 
 ### 🕘 Eventos
 ![Ejercicio 15](https://github.com/JCampo1502/javascriptEjerciciosAgileInova/blob/main/images/task-15.png?raw=true)
-![Ejercicio 16](https://github.com/JCampo1502/javascriptEjerciciosAgileInova/blob/main/images/task-16.png?raw=true)
+![Ejercicio 16](https://github.com/JCampo1502/javascriptEjerciciosAgileInova/blob/main/images/task-16-1.png?raw=true)
+![Ejercicio 16](https://github.com/JCampo1502/javascriptEjerciciosAgileInova/blob/main/images/task-16-2.png?raw=true)
 ![Ejercicio 17](https://github.com/JCampo1502/javascriptEjerciciosAgileInova/blob/main/images/task-17.png?raw=true)
 
 ### ✨ Funciones
