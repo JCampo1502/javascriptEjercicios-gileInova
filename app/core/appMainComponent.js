@@ -1,6 +1,7 @@
 
 export class AppMainComponent extends HTMLElement{
-    static #CurrentSection = 1;
+    static #CurrentSection = 1
+    ;
     static #CurrentTask = 1;
 
     constructor(){
