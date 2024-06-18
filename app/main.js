@@ -6,6 +6,7 @@ import { AppExeciseComponent } from './shared/appExeciseComponent.js';
 import { AppButtonTaskComponent } from './shared/appButtonTaskComponent.js';
 import { AppEventTextInputBoxComponent } from './shared/appEventTextInputBoxComponent.js';
 import { AppCalculatorComponent } from './shared/appCalculatorComponent.js';
+import { AppMoviesComponent } from './shared/appMoviesComponent.js';
 /* Exercises */
 
 /* Section 01 */
@@ -30,6 +31,9 @@ import { AppTask12Component } from './core/tasks/appTask12Component.js';
 import { AppTask13Component } from './core/tasks/appTask13Component.js';
 import { AppTask14Component } from './core/tasks/appTask14Component.js';
 import { AppTask15Component } from './core/tasks/appTask15Component.js';
+
+/* Section 04 */
+import { AppTask16Component } from './core/tasks/appTask16Component.js';
 
 /* Section 06 */
 import { AppTask17Component } from './core/tasks/appTask17Component.js';

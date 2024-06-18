@@ -195,6 +195,8 @@ export class AppMainComponent extends HTMLElement{
 
             h2{
                 font-size:var(--font-size-lg);
+                
+                margin-top:2rem;
             }
 
             h3{
@@ -203,6 +205,10 @@ export class AppMainComponent extends HTMLElement{
 
             p{
                 font-size:var(--font-size-sm);
+            }
+
+            img{
+                width:100%;
             }
 
             @media (min-width: 768px){
@@ -236,7 +242,6 @@ export class AppMainComponent extends HTMLElement{
                     width:120px;  
                     flex-direction:column;
                     max-height:200px;
-                    
                 }
                     
                 .main__list{                    
