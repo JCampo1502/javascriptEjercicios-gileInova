@@ -1,5 +1,8 @@
 export class AppTask21Component extends HTMLElement{
-    #state = {}
+    #state = {
+        age:0,
+        time:0
+    }
 
     constructor(){
         super();
@@ -34,15 +37,21 @@ export class AppTask21Component extends HTMLElement{
         Control.setAttribute('event-name','imss');
 
         /* Add Content */
-        Table.heads = [/* Add Table Th */]
+        Table.heads = ["Tipo Jubilacion" ]
         Table.rows = this.#tableContent;
         Control.formInputs = [
-            /*{
-            name: id, 
-            description: label, 
-            value:default value or value, 
-            type:input type
-            }*/
+            {
+                name: 'age', 
+                description: 'Ingresa la edad de la persona en años', 
+                value:this.#state.age, 
+                type:'number'
+            },
+            {
+                name: 'time', 
+                description: 'Antigüedad en su empleo en años', 
+                value:this.#state.age, 
+                type:'number'
+            }
         ]
 
         /* Add in template  */
@@ -58,13 +67,14 @@ export class AppTask21Component extends HTMLElement{
 
         /* Validations */
         if(
+            isNaN(value) ||
             !Table || 
             !Object.hasOwn(this.#state, name) || 
             !value || this.#state[name] == value
         )return;
 
         /* Update State */
-        Obj[name] = value;
+        Obj[name] = parseInt(value);
         this.#updateState(Obj);
 
         /* Update Table */
@@ -77,7 +87,26 @@ export class AppTask21Component extends HTMLElement{
     }
 
     get #tableContent(){
-        return [[/* Row */]];
+        let {age, time}=this.#state;
+        let type = 'No Cumple';
+        if(
+            age > 60 &&
+            time < 25
+        ){
+            type = 'Jubilación por edad'
+        }else if(
+            age <= 60 &&
+            time >= 25
+        ){
+            type= "Antiguedad Joven";
+        }else if (
+            age >= 60 &&
+            time >= 25
+        ){
+            type = "Antiguedad Adulta"
+        }
+
+        return [[type]];
     }
 
     get #htmlTemplate(){
